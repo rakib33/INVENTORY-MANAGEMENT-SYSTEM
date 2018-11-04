@@ -1,0 +1,156 @@
+﻿@model BookStore.Models.Inventory.Invoice
+
+
+    <div id="page-title">
+        <h2>Due Paid Forms</h2>
+    </div>
+
+    <div class="panel">
+        <div class="panel-body">
+            <h3 class="title-hero">
+                @Html.Raw(ViewBag.message)
+            </h3>
+            <div class="example-box-wrapper">
+                @using (Html.BeginForm("Transaction", "InvTransaction", FormMethod.Post, new { @class = "form-horizontal bordered-row", id = "demo-form", data_parsley_validate = "", novalidate = "" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="row">
+                        <div class="col-md-6">
+                            @Html.ValidationSummary(true)
+                        </div>
+                        @Html.HiddenFor(model => model.Id)
+                        @Html.HiddenFor(model => model.CreatedBy)
+                        @Html.HiddenFor(model => model.CreatedDate)
+                        @Html.HiddenFor(model => model.InvoiceType)
+                        @Html.HiddenFor(model => model.InvoiceDate)
+                        @Html.HiddenFor(model => model.InvoiceNo)
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label"><span class="red">*</span>Invoice No</label>
+                                <div class="col-sm-6">
+                                    @Html.TextBoxFor(model => model.InvoiceNo, new { placeholder = "Invoice No", @class = "form-control disabled no-border" })                                  
+                                    <ul class="parsley-errors-list" id="parsley-id-4059"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label"><span class="red">*</span>Invoice Date</label>
+                                <div class="col-sm-6">
+                                    @Html.TextBoxFor(model => model.InvoiceDate, "{0:d MMM yyyy}", new { placeholder = "Invoice Date", @class = "datepicker form-control disabled no-border" })                                   
+                                    <ul class="parsley-errors-list" id="parsley-id-4059"></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label"><span class="red">*</span>Sub Total</label>
+                                <div class="col-sm-6">
+                                    @Html.TextBoxFor(model => model.Total, new { @class = "form-control disabled no-border" })                                  
+                                    <ul class="parsley-errors-list" id="parsley-id-4059"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label"><span class="red">*</span>Discount</label>
+                                <div class="col-sm-6">
+                                    @Html.TextBoxFor(model => model.Discount, new { @class = "form-control disabled no-border" })                                   
+                                    <ul class="parsley-errors-list" id="parsley-id-4059"></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label"><span class="red">*</span>Total</label>
+                                <div class="col-sm-6">
+                                    @Html.TextBoxFor(model => model.Payable, new { @class = "form-control disabled no-border" })                                  
+                                    @Html.TextBox("CurrentTotal", Model.Payable, new { id = "CurrentPaid", @class = "hide" })
+                                    
+                                    <ul class="parsley-errors-list" id="parsley-id-4059"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label"><span class="red">*</span>Paid</label>
+                                <div class="col-sm-6">
+                                    @Html.TextBoxFor(model => model.Paid, new { @class = "form-control disabled no-border" })      
+                                    @Html.TextBox("CurrentPaid", Model.Paid, new { id = "CurrentPaid", @class="hide" })                             
+                                    <ul class="parsley-errors-list" id="parsley-id-4059"></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label"><span class="red">*</span>Due</label>
+                                <div class="col-sm-6">
+                                    @Html.TextBoxFor(model => model.Due, new { @class = "form-control disabled no-border" })  
+                                    @Html.TextBox("CurrentDue",Model.Due, new { id = "CurrentDue", @class="hide" })                                
+                                    <ul class="parsley-errors-list" id="parsley-id-4059"></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label"><span class="red">*</span>Due Paid</label>
+                                <div class="col-sm-6">
+                                    @Html.TextBox("PaidAmount","", new { id="PaidAmount",required="", @class = "form-control decimal" })                                   
+                                    <ul class="parsley-errors-list" id="parsley-id-4059"></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    
+                    <div class="bg-default content-box text-center">
+
+                       @if (Model.InvoiceType == "Purchase")
+                       { 
+                           <span class="pull-left">
+                               <a class="btn btn-link font-blue" href="/InvPurchase/Index?Option=Inv">
+                                   <i class="glyph-icon icon-angle-double-left" title="" data-original-title=".icon-angle-double-left" aria-describedby="tooltip602646">
+                                       Back to List
+                                   </i>
+                               </a>
+                           </span>
+                       }
+                       @if (Model.InvoiceType == "Sale")
+                       {
+                           <span class="pull-left">
+                               <a class="btn btn-link font-blue" href="/InvSale/Index??Option=Inv">
+                                   <i class="glyph-icon icon-angle-double-left" title="" data-original-title=".icon-angle-double-left" aria-describedby="tooltip602646">
+                                       Back to List
+                                   </i>
+                               </a>
+                        </span>
+                       }
+                                        
+                      
+                        <button class="btn btn-lg btn-primary btn-hover" id="btnSubmit" onsubmit="return click()">
+                            <span>Save Transaction</span>
+                            <i class="glyph-icon icon-check" title="" data-original-title=".icon-check" aria-describedby="tooltip941007"></i>
+                        </button>                        
+                        
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+
+<script src="~/Scripts/Transaction.js"></script>
+<script src="~/Scripts/input_validation.js"></script>
+

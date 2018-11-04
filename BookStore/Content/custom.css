@@ -1,0 +1,107 @@
+﻿/*custom table design*/
+
+  table .collapse.in {
+        display: table-row;
+    }
+
+    .custom-loader-color {
+        color: #fff !important;
+        font-size: 50px !important;
+    }
+
+    .custom-loader-background {
+        background-color: crimson !important;
+    }
+
+    .custom-middle-align {
+        vertical-align: middle !important;
+    }
+    
+ /*custom table design*/
+
+.login-error {
+color:red !important;
+}
+.color-green {
+    color:green !important;
+}
+.red {
+color:red;
+}
+
+
+.UserProfile {
+ width:250px !important;
+}
+
+h1, h2, h3, h4, h5, h6, #page-title > h2, #page-title > p {
+    font-family: 'Helvetica' !important;
+     font-weight: 300; 
+}
+/*layout.css:419*/
+#page-title p {
+     opacity: 0.1 !important; 
+}
+
+
+.demo-icon {
+
+    border:none !important;
+   
+}
+.margin-top-0 { margin-top: 0em !important; }
+.margin-top-05 { margin-top: 0.5em; }
+.margin-top-10 { margin-top: 1.0em; }
+.margin-top-15 { margin-top: 1.5em; }
+.margin-top-20 { margin-top: 2.0em; }
+.margin-top-25 { margin-top: 2.5em; }
+.margin-top-30 { margin-top: 3.0em; }
+
+.txt-hight-35 {
+    height:35px !important;
+}
+.txt-hight-30 {
+    height:30px !important;
+}
+.txt-hight-25 {
+    height:25px !important;
+}
+
+/*text box loading gif*/
+
+/*.loadinggif {
+    background:url('http://www.hsi.com.hk/HSI-Net/pages/images/en/share/ajax-loader.gif') no-repeat right center;
+}*/
+
+.img-box-size {
+width:200px !important;
+height:200px !important;
+}
+
+.img-ratio {
+    height:80% !important;
+}
+
+/*********** Register Page ***************/
+
+.fname,.lname {
+ width:49% !important;
+}
+.lname {
+margin-left:2px;
+}
+
+.img-td {
+  height:50px;
+  width:50px;
+}
+
+.align-right {
+ text-align:right !important;
+}
+.align-left {
+ text-align:left !important;
+}
+.align-center {
+text-align:center !important;
+}

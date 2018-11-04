@@ -1,0 +1,66 @@
+﻿@model IEnumerable<BookStore.Models.Inventory.ProductWiseViewModel>
+@{
+    int row = 0;
+}
+
+  
+   
+
+
+    <div id="dtGainLoss" class="row margin-top-5">
+        <h2>Live Product Gain Loss Chart</h2>
+        <table id="dashboard" class="table table-striped table-bordered dt-responsive nowrap margin-top-10" cellspacing="0" width="100%">
+
+            <thead class="bg-default">
+                <tr role="row">
+                    <th style="width:5px" class="all">Sl No</th>
+                    <th class="all">Product Name</th>
+                    <th>Buy Qty</th>
+                    <th>Buy Cost</th>
+                    <th>Sale Qty</th>
+                    <th>Sale Cost</th>
+                    <th>Realized Gain/Loss</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null)
+                {
+                    foreach (var item in Model)
+                    {
+                        row++;
+                        <tr>
+                            <td>@row</td>
+                            <td>@item.Name</td>
+                            <td class="align-right">@item.BuyQty</td>
+                            <td class="align-right">@item.BuyAmount BDT</td>
+                            <td class="align-right">@item.SaleQty</td>
+                            <td class="align-right">@item.SaleAmount BDT</td>
+
+                            @if (item.RealizedGain < 0)
+                            {
+                                <td class="align-right" style="background-color:red;color:white">@item.RealizedGain BDT</td>
+                            }
+                            else if (item.RealizedGain == 0)
+                            {
+                                <td class="align-right" style="background-color:yellow;color:green">@item.RealizedGain BDT</td>
+                            }
+                            else
+                            {
+                                <td class="align-right" style="background-color:green;color:white">@item.RealizedGain BDT</td>
+                            }
+
+                        </tr>
+
+                    }
+                }
+
+            </tbody>
+
+        </table>
+
+
+    </div>
+
+
+
+

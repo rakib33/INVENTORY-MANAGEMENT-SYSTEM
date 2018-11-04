@@ -1,0 +1,1806 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Body>
+    <ReportItems>
+      <Tablix Name="Tablix1">
+        <TablixBody>
+          <TablixColumns>
+            <TablixColumn>
+              <Width>0.41406in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>1.16927in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.73959in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.875in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.63542in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.79167in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.57292in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.8125in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.77083in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.76042in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.84375in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.75in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.5625in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.71875in</Width>
+            </TablixColumn>
+          </TablixColumns>
+          <TablixRows>
+            <TablixRow>
+              <Height>0.43167in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox11">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Sl No</Value>
+                              <Style>
+                                <FontFamily>Arial Narrow</FontFamily>
+                                <FontSize>9pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox11</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox19">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Product Name</Value>
+                              <Style>
+                                <FontFamily>Arial Narrow</FontFamily>
+                                <FontSize>9pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox19</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox2">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Buy Qty</Value>
+                              <Style>
+                                <FontFamily>Arial Narrow</FontFamily>
+                                <FontSize>9pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox2</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox25">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value> Buy Amount </Value>
+                              <Style>
+                                <FontFamily>Arial Narrow</FontFamily>
+                                <FontSize>9pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontFamily>Arial Narrow</FontFamily>
+                                <FontSize>9pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox25</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox32">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Sale Qty</Value>
+                              <Style>
+                                <FontFamily>Arial Narrow</FontFamily>
+                                <FontSize>9pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox32</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox29">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Sale Amount</Value>
+                              <Style>
+                                <FontFamily>Arial Narrow</FontFamily>
+                                <FontSize>9pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox29</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox31">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Stock Qty</Value>
+                              <Style>
+                                <FontFamily>Arial Narrow</FontFamily>
+                                <FontSize>9pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox31</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox1">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Current Market Rate</Value>
+                              <Style>
+                                <FontFamily>Arial Narrow</FontFamily>
+                                <FontSize>9pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox1</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox6">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Current Market Value</Value>
+                              <Style>
+                                <FontFamily>Arial Narrow</FontFamily>
+                                <FontSize>9pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox6</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox5">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Avg Cost</Value>
+                              <Style>
+                                <FontFamily>Arial Narrow</FontFamily>
+                                <FontSize>9pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox5</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox9">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Total Cost</Value>
+                              <Style>
+                                <FontFamily>Arial Narrow</FontFamily>
+                                <FontSize>9pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox9</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox33">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Realized Gain/Loss</Value>
+                              <Style>
+                                <FontFamily>Arial Narrow</FontFamily>
+                                <FontSize>9pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox33</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox35">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Gain/Loss (%)</Value>
+                              <Style>
+                                <FontFamily>Arial Narrow</FontFamily>
+                                <FontSize>9pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox35</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox14">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Un Realized Gain</Value>
+                              <Style>
+                                <FontFamily>Arial Narrow</FontFamily>
+                                <FontSize>9pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox14</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.22333in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox12">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=RowNumber(nothing)</Value>
+                              <Style>
+                                <FontFamily>Arial Narrow</FontFamily>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox12</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Name">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!Name.Value</Value>
+                              <Style>
+                                <FontFamily>Arial Narrow</FontFamily>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Name</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="TotalBuyQty">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Replace(FormatCurrency(Fields!BuyQty.Value,2),"$","")</Value>
+                              <Style>
+                                <FontFamily>Arial Narrow</FontFamily>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>TotalBuyQty</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="TotalBuyAmount">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Replace(FormatCurrency(Fields!BuyAmount.Value,2),"$","")</Value>
+                              <Style>
+                                <FontFamily>Arial Narrow</FontFamily>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>TotalBuyAmount</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="TotalSaleQty">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Replace(FormatCurrency(Fields!SaleQty.Value,2),"$","")</Value>
+                              <Style>
+                                <FontFamily>Arial Narrow</FontFamily>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>TotalSaleQty</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="TotalSaleAmount">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Replace(FormatCurrency(Fields!SaleAmount.Value,2),"$","")</Value>
+                              <Style>
+                                <FontFamily>Arial Narrow</FontFamily>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>TotalSaleAmount</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="StockQty">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Replace(FormatCurrency(Fields!CurrentStockQty.Value,2),"$","")</Value>
+                              <Style>
+                                <FontFamily>Arial Narrow</FontFamily>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>StockQty</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="CurrentSaleRate">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Replace(FormatCurrency(Fields!MarketRate.Value,2),"$","")</Value>
+                              <Style>
+                                <FontFamily>Arial Narrow</FontFamily>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>CurrentSaleRate</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="CurrentMarketPrice">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Replace(FormatCurrency(Fields!MarketValue.Value,2),"$","")</Value>
+                              <Style>
+                                <FontFamily>Arial Narrow</FontFamily>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>CurrentMarketPrice</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="AvgCost">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Replace(FormatCurrency(Fields!AvgCost.Value,2),"$","")</Value>
+                              <Style>
+                                <FontFamily>Arial Narrow</FontFamily>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>AvgCost</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="TotalCost">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Replace(FormatCurrency(Fields!TotalCost.Value,2),"$","")</Value>
+                              <Style>
+                                <FontFamily>Arial Narrow</FontFamily>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>TotalCost</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="RealizedGain">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Replace(FormatCurrency(Fields!RealizedGain.Value,2),"$","")</Value>
+                              <Style>
+                                <FontFamily>Arial Narrow</FontFamily>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>RealizedGain</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox36">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Replace(FormatCurrency(Fields!RealizedGain.Value/100,2),"$","")</Value>
+                              <Style>
+                                <FontFamily>Arial Narrow</FontFamily>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox36</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="UnRealizedGain">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Replace(FormatCurrency(Fields!UnRealizedGain.Value,2),"$","")</Value>
+                              <Style>
+                                <FontFamily>Arial Narrow</FontFamily>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>UnRealizedGain</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.25in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox16">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Total</Value>
+                              <Style>
+                                <FontFamily>Arial Narrow</FontFamily>
+                                <FontSize>9pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox16</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox17">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontFamily>Arial Narrow</FontFamily>
+                                <FontSize>9pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox17</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox15">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Replace(FormatCurrency(Sum(Fields!BuyQty.Value, "ProductBalanceSheet"),2),"$","")</Value>
+                              <Style>
+                                <FontFamily>Arial Narrow</FontFamily>
+                                <FontSize>9pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox15</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox20">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Replace(FormatCurrency(Sum(Fields!BuyAmount.Value, "ProductBalanceSheet"),2),"$","")</Value>
+                              <Style>
+                                <FontFamily>Arial Narrow</FontFamily>
+                                <FontSize>9pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox20</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox37">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Replace(FormatCurrency(Sum(Fields!SaleQty.Value, "ProductBalanceSheet"),2),"$","")</Value>
+                              <Style>
+                                <FontFamily>Arial Narrow</FontFamily>
+                                <FontSize>9pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox37</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox22">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Replace(FormatCurrency(Sum(Fields!SaleAmount.Value, "ProductBalanceSheet"),2),"$","")</Value>
+                              <Style>
+                                <FontFamily>Arial Narrow</FontFamily>
+                                <FontSize>9pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox22</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox23">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Replace(FormatCurrency(Sum(Fields!CurrentStockQty.Value, "ProductBalanceSheet"),2),"$","")</Value>
+                              <Style>
+                                <FontFamily>Arial Narrow</FontFamily>
+                                <FontSize>9pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox23</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox24">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontFamily>Arial Narrow</FontFamily>
+                                <FontSize>9pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox24</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox26">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Replace(FormatCurrency(Sum(Fields!MarketValue.Value, "ProductBalanceSheet"),2),"$","")</Value>
+                              <Style>
+                                <FontFamily>Arial Narrow</FontFamily>
+                                <FontSize>9pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox26</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox8">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontFamily>Arial Narrow</FontFamily>
+                                <FontSize>9pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox8</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox13">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontFamily>Arial Narrow</FontFamily>
+                                <FontSize>9pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox13</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox27">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Replace(FormatCurrency(Sum(Fields!RealizedGain.Value, "ProductBalanceSheet"),2),"$","")</Value>
+                              <Style>
+                                <FontFamily>Arial Narrow</FontFamily>
+                                <FontSize>9pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox27</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox28">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontFamily>Arial Narrow</FontFamily>
+                                <FontSize>9pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox28</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox30">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Replace(FormatCurrency(Sum(Fields!UnRealizedGain.Value, "ProductBalanceSheet"),2),"$","")</Value>
+                              <Style>
+                                <FontFamily>Arial Narrow</FontFamily>
+                                <FontSize>9pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox30</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+          </TablixRows>
+        </TablixBody>
+        <TablixColumnHierarchy>
+          <TablixMembers>
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+          </TablixMembers>
+        </TablixColumnHierarchy>
+        <TablixRowHierarchy>
+          <TablixMembers>
+            <TablixMember>
+              <KeepWithGroup>After</KeepWithGroup>
+              <RepeatOnNewPage>true</RepeatOnNewPage>
+            </TablixMember>
+            <TablixMember>
+              <Group Name="Details" />
+            </TablixMember>
+            <TablixMember>
+              <KeepWithGroup>Before</KeepWithGroup>
+            </TablixMember>
+          </TablixMembers>
+        </TablixRowHierarchy>
+        <DataSetName>ProductBalanceSheet</DataSetName>
+        <Left>0.12375in</Left>
+        <Height>0.905in</Height>
+        <Width>10.41667in</Width>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Tablix>
+    </ReportItems>
+    <Height>1.69792in</Height>
+    <Style />
+  </Body>
+  <Width>10.58209in</Width>
+  <Page>
+    <PageHeader>
+      <Height>1.22917in</Height>
+      <PrintOnFirstPage>true</PrintOnFirstPage>
+      <PrintOnLastPage>true</PrintOnLastPage>
+      <ReportItems>
+        <Image Name="Logo">
+          <Source>Embedded</Source>
+          <Value>risoftcolor</Value>
+          <Sizing>FitProportional</Sizing>
+          <Height>0.33209in</Height>
+          <Width>0.98833in</Width>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </Image>
+        <Textbox Name="Textbox3">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Product Gain Loss Balance Sheet</Value>
+                  <Style>
+                    <FontFamily>Arial Narrow</FontFamily>
+                    <FontSize>11pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Day End Statement</Value>
+                  <Style>
+                    <FontFamily>Arial Narrow</FontFamily>
+                    <FontSize>9pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Date On </Value>
+                  <Style>
+                    <FontFamily>Arial Narrow</FontFamily>
+                    <FontSize>9pt</FontSize>
+                  </Style>
+                </TextRun>
+                <TextRun>
+                  <Value>=Parameters!ToDate.Value</Value>
+                  <Style>
+                    <FontFamily>Arial Narrow</FontFamily>
+                    <FontSize>9pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox3</rd:DefaultName>
+          <Top>0.10292in</Top>
+          <Left>3.66976in</Left>
+          <Height>0.67708in</Height>
+          <Width>2.84375in</Width>
+          <ZIndex>1</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox4">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Date :</Value>
+                  <Style>
+                    <FontFamily>Arial Narrow</FontFamily>
+                  </Style>
+                </TextRun>
+                <TextRun>
+                  <Value>=CDate(Now()).ToString("MMM dd,yyyy h:mm:ss tt")</Value>
+                  <Style>
+                    <FontFamily>Arial Narrow</FontFamily>
+                    <FontSize>9pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox4</rd:DefaultName>
+          <Top>0.405in</Top>
+          <Left>7.23225in</Left>
+          <Height>0.25in</Height>
+          <Width>2.89584in</Width>
+          <ZIndex>2</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+      </ReportItems>
+      <Style>
+        <Border>
+          <Style>None</Style>
+        </Border>
+      </Style>
+    </PageHeader>
+    <PageWidth>11.5in</PageWidth>
+    <LeftMargin>0.75in</LeftMargin>
+    <RightMargin>0.5in</RightMargin>
+    <TopMargin>0.5in</TopMargin>
+    <BottomMargin>0.5in</BottomMargin>
+    <Style />
+  </Page>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="ProductBalanceSheet">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>56bb7b6f-d51b-4012-814b-c0d9accb70d9</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="ProductBalanceSheet">
+      <Query>
+        <DataSourceName>ProductBalanceSheet</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="ProductId">
+          <DataField>ProductId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Name">
+          <DataField>Name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="BuyQty">
+          <DataField>BuyQty</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="BuyAmount">
+          <DataField>BuyAmount</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SaleQty">
+          <DataField>SaleQty</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SaleAmount">
+          <DataField>SaleAmount</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CurrentStockQty">
+          <DataField>CurrentStockQty</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="AvgCost">
+          <DataField>AvgCost</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TotalCost">
+          <DataField>TotalCost</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RealizedGain">
+          <DataField>RealizedGain</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="UnRealizedGain">
+          <DataField>UnRealizedGain</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="InvoiceType">
+          <DataField>InvoiceType</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="InvoiceDate">
+          <DataField>InvoiceDate</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="MarketRate">
+          <DataField>MarketRate</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="MarketValue">
+          <DataField>MarketValue</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>ProductBalanceSheet</rd:DataSetName>
+        <rd:SchemaPath>E:\INVENTORY-MANAGEMENT-SYSTEM\BookStore\DataSet\ProductBalanceSheet.xsd</rd:SchemaPath>
+        <rd:TableName>ProductBalanceSheet</rd:TableName>
+        <rd:TableAdapterFillMethod />
+        <rd:TableAdapterGetDataMethod />
+        <rd:TableAdapterName />
+      </rd:DataSetInfo>
+    </DataSet>
+  </DataSets>
+  <ReportParameters>
+    <ReportParameter Name="ToDate">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <EmbeddedImages>
+    <EmbeddedImage Name="risoftcolor">
+      <MIMEType>image/png</MIMEType>
+      <ImageData>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</ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>403744e3-3679-48e9-b918-f33f3b29a595</rd:ReportID>
+</Report>

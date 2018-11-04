@@ -1,0 +1,291 @@
+﻿<!--<div class="text-center" ng-controller="AuthorController">
+    <h1>Author Page</h1>
+    <p>{{msg}}</p>
+</div>
+
+<script>
+    angular.module('MyApp')
+    .controller('AuthorController', function ($scope) {
+        $scope.msg = 'Look! I am an Author page.';
+    });
+</script>-->
+
+
+
+
+    <div data-ng-controller="AuthorController" class="container">   <!--ng-app="bookStoreApp"-->
+        <div ng-show="error" class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <p>{{ error }}</p>
+        </div>
+
+        <!--<p><a data-ng-click="showadd()" href="javascript:;" class="btn btn-primary">Add New Author</a></p>-->
+
+        <div class="modal fade" id="AuthorSaveModel" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                        <h4 class="modal-title" id="myModalLabel" ng-hide="editMode">Add Author</h4>
+                        <h4 class="modal-title" id="myModalLabel" ng-show="editMode">Edit Author</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="form" name="AddAuthorForm">
+
+                            <!--<div class="form-group">
+                                <label for="title" class="col-sm-2 control-label">Password</label>
+                                <div class="col-sm-10 clearfix" ng-class="{'has-error': AddAuthorForm.password.$invalid && AddAuthorForm.password.$dirty, 'has-success': AddAuthorForm.password.$valid}">
+                                    <span class="block input-icon input-icon-right">
+                                        <input type="password" class="form-control" placeholder="Password" name="password" data-ng-model="author.password" ng-minlength="8" required />
+                                    </span>
+                                    <p class="help-block" ng-if="AddAuthorForm.password.$invalid && AddAuthorForm.password.$dirty">Please Enter at least 8 characters</p>
+                                </div>
+                            </div>-->
+                            <!--<input type="text" ng-hide="true" value="{{author.Id}}" />-->  <!--data-ng-model="authorSave.Id1"-->
+                                <div class="form-group">
+                                    <label for="title" class="col-sm-2 control-label">Initials</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" ng-readonly="editText" data-ng-model="author.Initials" class="form-control" id="title" placeholder="Your Initials" required title="Enter your Initials" />
+                                    </div>
+                                    <!--<p class="help-block" ng-if="AddAuthorForm.Initials.$invalid && loginForm.Initials.$dirty">Please Enter at least 8 characters</p>-->
+                                </div>
+                                <div class="form-group">
+                                    <label for="title" class="col-sm-2 control-label">First Name</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" ng-readonly="editText" class="form-control" id="title" data-ng-model="author.FirstName" placeholder="Your First Name" required title="Enter your First name" />  <!--data-ng-model="author.FirstName"-->
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="title" class="col-sm-2 control-label">Last Name</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" ng-readonly="editText" class="form-control" id="title" data-ng-model="author.LastName" placeholder="Your Last Name" required title="Enter your Last name" />  <!--data-ng-model="author.LastName"-->
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="title" class="col-sm-2 control-label">Address</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" ng-readonly="editText" class="form-control" id="title" data-ng-model="author.Address" placeholder="Your Address" required title="Enter your address" />   <!--data-ng-model="author.Address"-->
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="title" class="col-sm-2 control-label">Zip Code</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" ng-readonly="editText" class="form-control" data-ng-model="author.ZipCode" id="title" placeholder="Your Zip Code" required title="Enter Zip Code" numbers-only limit-to="5" />  <!--numbers-only limit-to="5"--><!--data-ng-model="author.ZipCode"-->
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="title" class="col-sm-2 control-label">Country</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" ng-readonly="editText" class="form-control" id="title" data-ng-model="author.Country" placeholder="Country Name" required title="Enter Country" />  <!--data-ng-model="author.Country"-->
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <span data-ng-hide="editMode">
+                                            <input type="submit" value="Add" ng-disabled="AddAuthorForm.$invalid" data-ng-click="add()" class="btn btn-primary" />
+                                            <input type="button" value="Cancel" data-ng-click="cancel()" class="btn btn-primary" />
+                                        </span>
+                                        <span data-ng-show="editMode">
+                                            <label ng-click="first($index); editText=false;editorEnabled='false'" class="btn btn-info">Edit</label> <!--editText=false;editorEnabled='true'" -->
+                                            <input type="submit" data-ng-hide="editText" value="Update" ng-disabled="AddAuthorForm.$invalid" data-ng-click="update()" class="btn btn-primary" />
+                                            <input type="button" data-ng-hide="editText" value="Cancel" data-ng-click="cancel()" class="btn btn-primary" />
+                                        </span>
+                                        <!--<input type="button" value="Cancel" data-ng-click="cancel()" class="btn btn-primary" />-->
+                                    </div>
+                                </div>
+</form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--<h5>Author List</h5>-->
+
+        <div class="container">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="text-center">Author List</h4>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <label>Search</label>
+                                    <input type="text" ng-model="search" class="form-control" placeholder="Search">
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="col-md-6 text-right">
+                            <div class="pull-right">
+                                <a data-ng-click="showadd()" href="javascript:;" class="btn btn-primary"><span class="glyphicon glyphicon-plus"> Add Author</span></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br />
+                    <table class="table table-hover">
+                        <tr>
+                            <th>Sl No</th>
+                            <th>First Name</th>
+                            <td>Last Name</td>
+                            <th>Initials</th>
+                            <th>Address</th>
+                            <th>Zip Code</th>
+                            <th>Country</th>
+                            <!--<th></th>-->
+                        </tr>
+                        <tr dir-paginate="authorList in authors|orderBy:FirstName|filter:search|itemsPerPage:2" ng-dblclick="get(authorList)">
+                            <!--<tr data-ng-repeat="author in authors" ng-dblclick="get(author)">-->
+                            <td>{{ $index + 1 }}</td>
+                            <td>
+                                <p bind-once>{{ authorList.FirstName }}</p>
+
+                            </td>
+                            <td>
+                                <p bind-once>{{ authorList.LastName }}</p>
+
+                            </td>
+                            <td>
+                                <p bind-once>{{ authorList.Initials }}</p>
+
+                            </td>
+                            <td>
+                                <p bind-once>{{ authorList.Address }}</p>
+
+                            </td>
+                            <td>
+                                <p bind-once>{{ authorList.ZipCode }}</p>
+                            </td>
+                            <td>
+                                <p bind-once>{{ authorList.Country }}</p>
+                            </td>
+                            <!--<td>
+            <p>
+                <a data-ng-click="get(authorList)" href="javascript:;">View</a> |
+                <a data-ng-click="edit(authorList)" href="javascript:;">Edit</a> |
+                <a data-ng-click="showconfirm(authorList)" href="javascript:;">Delete</a>
+            </p>
+        </td>-->
+
+                        </tr>
+                    </table>
+                    <div class="pull-right">
+                        <!--this is for pagination-->
+                        <dir-pagination-controls max-size="2" direction-links="true" boundary-links="true"></dir-pagination-controls>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+        <div class="modal fade" id="AuthorViewModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                        <h4 class="modal-title" id="myModalLabel">View User</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="form" name="viewuser">
+
+                            <div class="form-group">
+                                <label for="ContactNo" class="col-sm-2 control-label">Initials</label>
+                                <div class="col-sm-10">
+                                    {{author.Initials}}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Name" class="col-sm-2 control-label">First Name</label>
+                                <div class="col-sm-10">
+                                    {{author.FirstName}}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="ContactNo" class="col-sm-2 control-label">Last Name</label>
+                                <div class="col-sm-10">
+                                    {{author.LastName}}
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="Address" class="col-sm-2 control-label">Zip Code</label>
+                                <div class="col-sm-10">
+                                    {{author.ZipCode}}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Address" class="col-sm-2 control-label">Address</label>
+                                <div class="col-sm-10">
+                                    {{author.Address}}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Address" class="col-sm-2 control-label">Country</label>
+                                <div class="col-sm-10">
+                                    {{author.Country}}
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+
+                    <div class="modal-footer">
+                        <a data-ng-click="edit(author)" href="javascript:;">Edit</a>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                        <h4 class="modal-title" id="myModalLabel">Confirm Action</h4>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure to delete?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-ng-click="delete()">Ok</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    $(document).ready(function () {
+        $("#zipCode").keydown(function (e) {
+
+            alert('hited');
+            // Allow: backspace, delete, tab, escape, enter and .
+            if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+                // Allow: Ctrl+A, Command+A
+                (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+                // Allow: home, end, left, right, down, up
+                (e.keyCode >= 35 && e.keyCode <= 40)) {
+                // let it happen, don't do anything
+                return;
+            }
+            // Ensure that it is a number and stop the keypress
+            if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                e.preventDefault();
+            }
+        });
+    });
+</script>

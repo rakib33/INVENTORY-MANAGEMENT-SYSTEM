@@ -1,0 +1,258 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+@*below is for jquery DatePicker*@
+<link href="~/Content/jquery-ui.css" rel="stylesheet" />
+@*<script src="~/Scripts/jquery-1.12.4.js"></script> this is in Layout page so omitted here*@
+<script src="~/Scripts/jquery-ui.js"></script>
+
+
+<div class="panel">
+    <div class="panel-body">
+        <div class="example-box-wrapper">
+            <div class="row">
+                <h3 class="title-hero">
+                    @Html.Raw(ViewBag.message)
+                </h3>
+            </div>
+
+            <div class="panel-info col-sm-12">
+                <div class="panel-heading txt-hight-35">
+                    Employee Salary Search Option
+                </div>
+                <div class="panel-body">
+
+                  
+                    <div class="row">
+
+                        <label class="col-sm-2 control-label pull-left"><span class="red">*</span>Invoice Date(From)</label>
+                        <div class="col-sm-4">
+                            <div class="input-prepend input-group">
+                                <span class="add-on input-group-addon">
+                                    <i class="glyph-icon icon-calendar"></i>
+                                </span>
+                                <span>
+                                    @Html.TextBox("FromDate", "", new { id = "FromDate", @class = "datepicker form-control", type = "text", required = "required", data_parsley_id = "4059" })
+                                </span>
+                                <ul class="parsley-errors-list" id="parsley-id-4059"></ul>
+                            </div>
+                        </div>
+
+                        <label class="col-sm-2 control-label pull-left"><span class="red">*</span>Invoice Date(To)</label>
+                        <div class="col-sm-4">
+                            <div class="input-prepend input-group">
+                                <span class="add-on input-group-addon">
+                                    <i class="glyph-icon icon-calendar"></i>
+                                </span>
+                                <span>
+                                    @Html.TextBox("ToDate", "", new { id = "ToDate", @class = "datepicker form-control", type = "text", required = "required", data_parsley_id = "4059" })
+                                </span>
+                                <ul class="parsley-errors-list" id="parsley-id-4059"></ul>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row  margin-top-05">
+                        @*<label class="col-sm-2 pull-left text-center">Invoice/Chalan No</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control pull-left txt-hight-30" name="InvoiceNo" id="InvoiceNo" />
+                        </div>*@
+                        <label class="col-sm-2 pull-left text-center">Employee Name</label>
+                        <div class="col-sm-4">
+                            @Html.DropDownList("EmployeeId", (IEnumerable<SelectListItem>)ViewBag.Employee, "--Select Employee--", new { id = "EmployeeId", @class = "form-control pull-left txt-hight-35" })
+                        </div>
+                    </div>
+                    <div class="row margin-top-05">
+                        <label class="col-sm-2 pull-left text-center"></label>
+                        <div class="col-sm-4">
+                            <button class="btn btn-sm btn-success margin-top-05 btn-hover" onclick="GetSalaryInvoiceInfo()">
+                                <span>Apply</span>
+                                <i class="glyph-icon icon-check" title="" data-original-title=".icon-plus-square" aria-describedby="tooltip941007">
+
+                                </i>
+                            </button>
+                            @*<input type="submit" class="btn btn-sm btn-success  pull-left margin-top-05" value="Apply" onclick="GetSalaryInvoiceInfo()" />*@
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+           
+                <div class="row margin-top-05">
+                    <div class="col-md-6">
+                        <a class="btn btn-sm btn-primary margin-top-05 btn-hover" href="/InvTransaction/AddSalary">
+                            <span>Add Salary</span>
+                            <i class="glyph-icon icon-plus" title="" data-original-title=".icon-plus-square" aria-describedby="tooltip941007">
+
+                            </i>
+                        </a>
+                    </div>
+                </div>
+           
+
+            <div id="datatable-responsive_wrapper" class="dataTables_wrapper form-inline margin-top-05">
+                <table id="exampleSale" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                    <thead>
+                        <tr role="row">
+                            <th style="width:5px" class="all">Sl No</th>
+                            <th>Salary No</th>
+                            <th class="all">Date</th>
+                            <th>Employee</th>
+                            <th>Phone</th> 
+                            <th>Salary</th>                                                     
+                            <th class="none">Diduction</th>
+                            <th class="none">Bonus</th>
+                            <th class="none">Mobile Bill</th>
+                            <th class="none">Transport Bill</th>
+                            @*<th class="all">Grant Total</th>*@
+                            <th class="all">Paid</th>
+                            <th class="none">Due</th>
+                            <th class="none">Status</th>
+
+                            <th class="all">Link</th> @*class "all": Always display column irrespective of the screen size.*@
+                            <th class="none">Paid By</th>  @*class "none": Don't display as a column, but show in the child row.*@
+                            <th class="none">Paid Date</th>
+
+                        </tr>
+                    </thead>
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(function () {
+        $(".datepicker").datepicker({ dateFormat: "dd-M-yy", maxDate: '0' }).val();
+    });
+
+    function GetSalaryInvoiceInfo() {
+        try {
+
+            var _invoice = $('#InvoiceNo').val();
+
+            var sId = document.getElementById("EmployeeId");
+            sId = sId.options[sId.selectedIndex].value;
+
+            var _fromDate = $('#FromDate').datepicker('getDate');
+            _fromDate = $.datepicker.formatDate('dd-mm-yy', _fromDate);
+            var _toDate = $('#ToDate').datepicker('getDate');
+            _toDate = $.datepicker.formatDate('dd-mm-yy', _toDate);
+
+          //  alert('From'+ _fromDate+' ToDate'+_toDate);
+
+            var _url = "/InvTransaction/LoadSalaryData?EmployeeId=" + sId + "&FromDate=" + _fromDate + "&ToDate=" + _toDate;
+
+            var t = $('#exampleSale').DataTable({
+                //for row index
+                "columnDefs": [{
+                    "targets": [0]
+                },
+                ],
+
+                //for only 2nd column order.ommit this so any column now searcable
+                "order": [[1, 'asc']],
+                "destroy": true, //must to destroy after load to avoid 'cannot reinitialise datatable' problem
+                "processing": true, // for show progress bar
+                "serverSide": true, // for process server side
+                "filter": false, // this is for disable filter (search box)
+                "orderMulti": false, // for disable multiple column at once
+                //"lengthChange": false, //stop filter by 10,15,20,50 row on per page
+
+
+                "ajax": {
+                    "url": _url,
+                    "type": "POST",
+                    "datatype": "json"
+                },
+
+
+                "columns": [
+                       {
+                           "data": null, "name": "Sl No", "display": "none",
+                           render: function (data, type, row, meta) {
+                               return meta.row + meta.settings._iDisplayStart + 1;
+                           }
+                       },   // it is Sr No and data=null I set to prevent display error alert datatables requested unknown parameter '0' for row 0 column 0, also should Display:none
+                        { "data": "InvoiceNo", "name": "Salary No", "autoWidth": true },
+                        {
+                            "data": "InvoiceDate", "name": "Date", "autoWidth": true,
+                            "render": function (d) {
+                                return moment(d).format("DD-MMM-YYYY");
+                               // return moment(d).format("MMM-YYYY");  //Do MMM YYYY =>11th Sep 02017
+                            }
+                        },
+                        { "data": "CustomerName", "name": "Employee", "autoWidth": true },
+                        { "data": "Phone", "name": "Phone", "autoWidth": true },
+                        { "data": "Total", "name": "Salary", "autoWidth": true },
+                                           
+
+                        { "data": "Discount", "name": "Discount", "autoWidth": true },
+                        { "data": "BonusOrExtra", "name": "Bonus", "autoWidth": true },
+                        { "data": "MobileBill", "name": "Mobile Bill", "autoWidth": true },
+                        { "data": "TransportBill", "name": "Transport Bill", "autoWidth": true },
+
+                        //{ "data": "Payable", "name": "Grant Total", "autoWidth": true },
+                        { "data": "Paid", "name": "Paid", "autoWidth": true },
+                        {
+                            "data": "Due", "name": "Due", "autoWidth": true,
+                            "render": function (data, type, row, meta) {
+                             if (data > 0) {
+                               
+                                 data = '<span class="font-red font-size-18 font-bold">' + data + '</span>'
+                                    
+                            } 
+                            return data;
+
+
+                            }
+
+                        },
+                        { "data": "Status", "name": "Status", "autoWidth": true },
+                        {
+                            "data": "Id", "name": "Link", "display": "none",
+                            "render": function (data, type, row, meta) {
+                                if (type === 'display') {
+                                    //data = '<a href="/InvInvoice/SaleInvoice?invoiceId=' + data + '" class="btn btn-sm btn-default font-green"><i class="glyph-icon icon-print" title=""></i></a>' +
+                                    //    '<a href="#" class="btn btn-sm btn-default font-green"><i class="glyph-icon icon-ellipsis-v" title="" data-original-title=".icon-ellipsis-v"></i></a>';
+
+                                    data = '<form action="/InvTransaction/EditSalary"  method="get">'
+                                         +'<input type="text" value="' + data + '" name="invoiceId" id="invoiceId" class="hide">' +
+                                        '<button type="submit" class="btn btn-sm btn-default font-green"><i class="glyph-icon icon-edit"></i></button></form>'
+                                }
+                                return data;
+
+
+                            }
+                        },
+
+                        { "data": "CreatedBy", "name": "Paid By", "autoWidth": true },
+                        {
+                            "data": "CreatedDate", "name": "Paid Date", "autoWidth": true,
+                            "render": function (d) {
+                                return moment(d).format("DD-MMM-YYYY");  //Do MMM YYYY =>11th Sep 02017
+                            }
+                        },
+
+                ]
+            });
+          
+        }
+        catch (err) {
+
+        }
+    }
+
+    $(document).ready(function () {
+        GetSalaryInvoiceInfo();
+    });
+
+</script>
+

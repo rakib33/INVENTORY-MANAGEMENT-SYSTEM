@@ -1,0 +1,64 @@
+﻿
+<style>
+    .thumb {
+        width: 24px;
+        height: 24px;
+        float: none;
+        position: relative;
+        display: inline;
+    }
+</style>
+
+<div data-ng-controller="BookController" class="container">
+    <!--ng-app="bookStoreApp"-->
+    <h1>Book Page</h1>
+    <p>{{ message }}</p>
+    <div ng-show="error" class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <p>{{ error }}</p>
+    </div>
+    
+    <form class="form-horizontal">
+        <h4>Tutorial</h4>
+        <hr />
+        <div class="form-group">
+            <label for="title" class="col-md-2 control-label">Title</label>
+            <div class="col-md-10">
+                <input type="text" data-ng-model="tutorial.title"
+                       name="title" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="description" class="col-md-2 control-label">Description</label>
+            <div class="col-md-10">
+                <textarea data-ng-model="tutorial.description"
+                          name="description" class="form-control"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="attachment" class="col-md-2 control-label">Attachment</label>
+            <div class="col-md-10">
+                <!--<input type="file" name="attachment" class="form-control" data-ak-file-model="tutorial.attachment" />-->
+                <input type="file" data-ak-file-model="tutorial.attachment" id="file" class="input-text" ngf-change="onChange($files)" ngf-select ng-model="picFile" name="attachement" accept="image/png, image/jpeg, image/jpg, application/msword, application/vnd.ms-excel, application/pdf " />
+
+            </div>
+            <img ng-show="isImage" ngf-src="picFile[0]" class="thumb">
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" class="btn btn-primary"
+                       value="Save" data-ng-click="saveTutorial(tutorial)" />
+            </div>
+        </div>
+    </form>
+
+    <form action="" id="contactproForm" method="post" enctype="multipart/form-data">
+        <label for="file">Attachment</label>
+        <div class="input-box">
+            <input type="file" id="file" class="input-text" ngf-change="onChange($files)" ngf-select ng-model="picFile" name="attachement" accept="image/png, image/jpeg, image/jpg,image/JPG, application/msword, application/vnd.ms-excel, application/pdf " />
+        </div>
+        <img ng-if="isImage(fileExt)" ngf-src="picFile[0]" class="thumb">
+    </form>
+
+</div>
+

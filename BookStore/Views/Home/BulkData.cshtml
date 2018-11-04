@@ -1,0 +1,209 @@
+﻿@*@model List<BookStore.Controllers.ContactInfo>*@
+
+@model BookStore.Controllers.Parent
+@{
+    ViewBag.Title = "Insert Bulk Data";
+}
+<style>
+    th {
+        text-align: left;
+    }
+
+    td {
+        padding: 5px;
+    }
+</style>
+<div style="width:700px; padding:5px; background-color:white;">
+    @using (Html.BeginForm("BulkData", "Home", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        if (ViewBag.Message != null)
+        {
+            <div style="border:solid 1px green">
+                @ViewBag.Message
+            </div>
+        }
+
+        <div class="btn ra-100 btn-primary font-white"><a href="#" id="addNew">Add New</a></div>
+
+    <a class="btn btn-danger ra-100" href="#" onclick="DeleteRow(this)">
+        <i class="glyph-icon icon-minus-square" title="" data-original-title=".icon-minus-square" aria-describedby="tooltip941007">
+             Remove
+        </i>
+    </a>
+
+        <table id="dataTable" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <th>Sl No</th>
+                <th>Contact Name</th>
+                <th>Contact No</th>
+                <th></th>
+            </tr>
+            @if (Model != null && Model.Children.Count > 0)
+            {
+                int j = 0;
+                foreach (var i in Model.Children)
+                {
+                    <tr style="border:0px">
+                        <td>1</td>
+                        <td>@Html.TextBoxFor(a =>a.Children[j].ContactName , new {id="Children["+j+"]ContactNo", @class = "form-control"})</td>
+                        <td>@Html.TextBoxFor(a => a.Children[j].ContactNo, new {id="Children["+j+"]ContactNo", @class = "form-control" })</td>
+                        <td>
+                            @if (j > 0)
+                            {
+                            <a class="btn btn-purple ra-100" href="#" onclick="DeleteRow(this)">
+                                <i class="glyph-icon icon-minus-square" title="" data-original-title=".icon-minus-square" aria-describedby="tooltip941007">
+                                    Remove
+                                </i>
+                            </a>
+                                                    }
+                        </td>
+                    </tr>
+                            j++;
+                }
+            }
+        </table>
+    <input class="btn ra-100 btn-success" type="submit" value="Save Bulk Data" />
+    }
+</div>
+
+@* Here I will add Jquery Code for validation / dynamically add new rows / Remove rows etc *@
+
+@*@section Scripts{*@
+    @*@Scripts.Render("~/bundles/jqueryval")*@
+    <script language="javascript">
+        $(document).ready(function () {
+
+            //1. Add new row
+            $("#addNew").click(function (e) {
+                e.preventDefault();
+                //var $tableBody = $("#dataTable");
+                //var $trLast = $tableBody.find("tr:last");
+                //var $trNew = $trLast.clone();
+
+                //var suffix = $trNew.find(':input:first').attr('name').match(/\d+/);
+                //$trNew.find("td:last").html('<a href="#" class="btn btn-danger ra-100"  onclick="DeleteRow(this)"><i class="glyph-icon icon-minus-square" title="" data-original-title=".icon-minus-square" aria-describedby="tooltip941007">Remove</i></a>');
+                //$.each($trNew.find(':input'), function (i, val) {
+                //    // Replaced Name
+                //    var oldN = $(this).attr('name');
+                //    var newN = oldN.replace('[' + suffix + ']', '[' + (parseInt(suffix) + 1) + ']');
+                //    $(this).attr('name', newN);
+                //    //Replaced value
+                //    var type = $(this).attr('type');
+                //    if (type.toLowerCase() == "text") {
+                //        $(this).attr('value', '');
+                //    }
+
+                //    // If you have another Type then replace with default value
+                //    $(this).removeClass("input-validation-error");
+
+                //});
+                //$trLast.after($trNew);
+
+                // Re-assign Validation
+                //var form = $("form")
+                //    .removeData("validator")
+                //    .removeData("unobtrusiveValidation");
+                //$.validator.unobtrusive.parse(form);
+
+                var prev;
+                var change;
+                var newHtml = '<tr>';
+
+
+                var table = document.getElementById("dataTable");
+
+                //get the table last row index
+                var lastRowIndex = table.rows.length;
+                //if two row 0,1 then lastRowIndex=2        
+
+                alert('last :' + lastRowIndex);
+                //Count number of columns in a table row
+                var totalcell = table.rows[lastRowIndex - 1].cells.length;
+
+                alert('total cell: ' + totalcell);
+
+
+                for (var i = 0; i < totalcell; i++) {
+                    //get per cell inner html
+                    var cellInnerHtml = table.rows[lastRowIndex - 1].cells[i].innerHTML;
+
+                    // alert('cell:[' + i + '] inner html:   ' + cellInnerHtml);
+                    //we know first cell is index so just incriment it
+
+                    //first column add Index Number
+                    if (i == 0) {
+                        var index = parseInt(cellInnerHtml);
+                        index = index + 1;
+                        newHtml += '<td>';
+                        newHtml += index;
+                        newHtml += '</td>';
+                    }
+                    else {
+
+                        if (i == 3) //last cell remove button
+                        {
+                            // alert('last cell');
+                            newHtml += '<td id="btn">';
+                            newHtml += '<a href="#" id="' + lastRowIndex + '" class="btn btn-danger ra-100"  onclick="DeleteRow(this)"><i class="glyph-icon icon-minus-square" title="" data-original-title=".icon-minus-square" aria-describedby="tooltip941007">  Remove</i></a>';
+                            newHtml += '</td>';
+                        }
+
+                        else {
+                            //though first row contaain text (<th>Sl No</th>
+                            //<th>Contact Name</th>
+                            //<th>Contact No</th>)
+                            var p = lastRowIndex - 2;
+                            var q = lastRowIndex - 1;
+
+                            prev = '[' + p + ']';
+
+                            change = '[' + q + ']';
+
+                            alert('Prev '+prev+' change '+change);
+
+                            //if (i == 2) { //DatePicker Cell
+                            //    newHtml += '<td class="input-group date" style="width:500px;">';
+                            //    //datepicker field has id and name both but replace only one at a time so we replace here one time that work for id
+                            //    cellInnerHtml = cellInnerHtml.replace(prev, change);
+                            //    //alert('replace: ' + cellInnerHtml);
+                            //}
+                            //else {
+                            //    newHtml += '<td>';
+                            //}
+                            alert('cellInnerHtml' + cellInnerHtml)
+                            newHtml += '<td>';
+                            newHtml += cellInnerHtml.replace(prev, change);
+                            alert(newHtml);
+                            newHtml = newHtml.replace(prev, change);
+                            alert(newHtml);
+                            newHtml += '</td>';
+                        }
+                    }
+                }
+
+                newHtml += '</tr>';
+                alert(newHtml);
+
+                $('#dataTable').append(newHtml);
+            });
+
+            // 2. Remove
+            $('a.remove').live("click", function (e) {
+                e.preventDefault();
+                $(this).parent().parent().remove();
+            });
+
+        
+
+        });
+        function DeleteRow(o) {
+            alert('hited');            
+            //no clue what to put here?
+            var p = o.parentNode.parentNode;
+            p.parentNode.removeChild(p);
+        }
+    </script>
+@*}*@

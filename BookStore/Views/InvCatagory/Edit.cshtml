@@ -1,0 +1,96 @@
+﻿@model BookStore.Models.Inventory.Catagory
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div id="productId">
+    <div id="page-title">
+        <h2>Catagory Edit Forms</h2>
+        <br />
+        <p class="color-green">
+            <h5 class="mrg10A">                
+            </h5>
+        </p>
+    </div>
+
+    <div class="panel">
+        <div class="panel-body">
+
+            <div class="example-box-wrapper">
+                @using (Html.BeginForm("Edit", "InvCatagory", FormMethod.Post, new { @class = "form-horizontal bordered-row", id = "demo-form", data_parsley_validate = "", novalidate = "" }))
+                {
+                    @Html.AntiForgeryToken()
+                      <div class="row">
+                        <div class="col-md-12 font-red">
+                            @Html.ValidationSummary(true)
+                        </div>
+                  
+                        @Html.HiddenFor(model => model.Id)
+                        @Html.HiddenFor(model => model.CreatedBy)
+                        @Html.HiddenFor(model => model.CreatedDate)
+                    </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label"><span class="red">*</span>Catagory Name</label>
+                                <div class="col-sm-6">
+                                    @Html.TextBoxFor(model => model.Name, new { placeholder = "Product Name", data_parsley_maxlength = "50", required = "", @class = "form-control", data_parsley_id = "4059" })
+
+                                    <ul class="parsley-errors-list" id="parsley-id-4059"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label"><span class="red">*</span>Main Catagory</label>
+                                <div class="col-sm-6">
+                                    @Html.DropDownListFor(model => model.Parent_Id, (IEnumerable<SelectListItem>)ViewBag.ParentCatagory, "Select Catagory", new { @class = "form-control", required = "", })
+                                    <ul class="parsley-errors-list" id="parsley-id-4059"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Description</label>
+                                <div class="col-sm-6">
+                                    @Html.TextAreaFor(model => model.Description, new { data_parsley_maxlength = "100", placeholder = "At most 300 characters", required = "", @class = "form-control", data_parsley_id = "7330" })
+                                    <ul class="parsley-errors-list" id="parsley-id-7330"></ul>
+                                </div>
+                            </div>
+                        </div>
+
+
+                         <div class="row bg-default content-box">
+                            <label class="col-sm-3 control-label">
+                               <span class="pull-left">
+                               <a class="btn btn-link font-blue" href="/InvCatagory/Index">
+                                <i class="glyph-icon icon-angle-double-left" title="" data-original-title=".icon-angle-double-left" aria-describedby="tooltip602646">
+                                   Back to List
+                                 </i>
+                                 </a>
+                                 </span>
+                                 </label>
+                                 <div class="col-sm-4">
+                                       <button class="btn btn-lg btn-primary btn-hover" id="btnSubmit">
+                                           <span>Edit Catagory</span>
+                                           <i class="glyph-icon icon-check" title="" data-original-title=".icon-check" aria-describedby="tooltip941007"></i>
+                                       </button>
+                                   </div>
+                               </div>
+                    
+                    
+                    @*<div class="bg-default content-box text-center pad20A mrg25T">
+                        <span class="pull-left button-pane">
+                            <a class="btn btn-link font-blue" href="/InvCatagory/Index">
+                                <i class="glyph-icon icon-angle-double-left" title="" data-original-title=".icon-angle-double-left" aria-describedby="tooltip602646">
+                                    Back to List
+                                </i>
+                            </a>
+                        </span>
+                        <button class="btn btn-lg btn-primary">Edit Catagory</button>
+                    </div>*@
+                }
+            </div>
+        </div>
+    </div>
+</div>

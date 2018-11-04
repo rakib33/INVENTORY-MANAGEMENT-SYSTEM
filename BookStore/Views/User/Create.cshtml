@@ -1,0 +1,314 @@
+﻿@model BookStore.Models.UserViewModel
+
+ @{  
+    TempData["UserType"] = ViewBag.Type;
+  }
+
+
+
+@*below is for jquery DatePicker*@
+<link href="~/Content/jquery-ui.css" rel="stylesheet" />
+@*<script src="~/Scripts/jquery-1.12.4.js"></script>*@
+<script src="~/Scripts/jquery-ui.js"></script>
+
+
+<div id="productId">
+    <!-- Parsley for data validation-->
+    @*<script type="text/javascript" src="../../assets/widgets/parsley/parsley.js"></script>*@
+
+    <div id="page-title">
+        <h3>@ViewBag.Type Create Forms</h3>
+        <h5>
+            You can add @ViewBag.Type for your Inventory.
+        </h5>
+        
+    </div>
+
+    <div class="panel">
+
+        <div class="panel-body">
+
+            <div class="example-box-wrapper">
+
+               @using (Html.BeginForm("Create", "User", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal bordered-row", id = "demo-form", data_parsley_validate = "", novalidate = "" }))
+               {
+                    
+                   @Html.AntiForgeryToken() 
+                   @Html.Hidden("UserType", (string)ViewBag.Type)
+                    
+                    <div class="row">
+                        <div class="col-md-12 font-red">
+                            @Html.ValidationSummary(true)
+                        </div>
+                    </div>
+                   
+                    <div class="row">
+                     <div class="col-md-8">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label"><span class="font-red">*</span>Full Name</label>
+                                <div class="col-sm-6">
+                                    @Html.TextBoxFor(model => model.Name, new { placeholder = "Name", data_parsley_maxlength = "50", required = "required", @class = "form-control", data_parsley_id = "4059" })
+                                    <ul class="parsley-errors-list font-red" id="parsley-id-4059"></ul>
+                                </div>
+                            </div>
+
+                         <div class="form-group">
+                             <label class="col-sm-4 control-label"><span class="font-red">*</span>User Name</label>
+                             <div class="col-sm-6">
+                                 @Html.TextBoxFor(model => model.UserName, new { placeholder = "User Name", data_parsley_maxlength = "20", required = "required", @class = "form-control", data_parsley_id = "4059" })
+                                 <ul class="parsley-errors-list login-error font-red" id="parsley-id-4059">
+                                     @Html.ValidationMessageFor(m => m.UserName)
+                                 </ul>
+                             </div>
+                         </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label"><span class="font-red">*</span>National Id</label>
+                                <div class="col-sm-6">
+                                    @Html.TextBoxFor(model => model.NID, new { placeholder = "National Id", data_parsley_maxlength = "100", required = "required", @class = "form-control", data_parsley_id = "4059" })
+                                    <ul class="parsley-errors-list login-error font-red" id="parsley-id-4059">
+                                        @Html.ValidationMessageFor(m => m.NID)
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label"><span class="font-red">*</span>Phone Number</label>
+                                <div class="col-sm-6">
+                                    @Html.TextBoxFor(model => model.Phone, new { placeholder = "Enter Phone number", data_parsley_maxlength = "20", required = "required", @class = "form-control", data_parsley_id = "4059" })
+                                    <ul class="parsley-errors-list login-error" id="parsley-id-4059">
+                                        @Html.ValidationMessageFor(m => m.Phone)
+                                    </ul>
+                                </div>
+                            </div>
+
+                            @if (ViewBag.Type == "Employee")
+                            {
+                                <div class="form-group">
+                                <label class="col-sm-4 control-label"><span class="font-red">*</span>Employee Password</label>
+                                <div class="col-sm-6">
+                                    @Html.TextBoxFor(model => model.Password, new { placeholder = "Employee Password", required = "required", data_parsley_maxlength = "150", @class = "form-control", data_parsley_id = "4059" })
+                                    <ul class="parsley-errors-list login-error" id="parsley-id-4059">
+                                        @Html.ValidationMessageFor(m => m.Password)
+                                    </ul>
+                                </div>
+                               </div>
+                                
+                              <div class="form-group">
+                                <label class="col-sm-4 control-label">                            
+                                    <span class="font-red">*</span>Blood Group
+                                </label>
+                                <div class="col-sm-6">
+                                    @Html.TextBoxFor(model => model.BloodGroup, new { placeholder = "Blood Group", data_parsley_maxlength = "20", required = "required", @class = "form-control", data_parsley_id = "4059" })
+                                    <ul class="parsley-errors-list" id="parsley-id-4059"></ul>
+                                </div>
+                            </div>
+                                
+                           <div class="form-group">
+                                <label class="col-sm-4 control-label"><span class="font-red">*</span>Preasent Address</label>
+                                <div class="col-sm-6">
+                                    @Html.TextBoxFor(model => model.PresentAddress, new { placeholder = "Present address", required = "required", data_parsley_maxlength = "150", @class = "form-control", data_parsley_id = "4059" })
+                                    <ul class="parsley-errors-list" id="parsley-id-4059"></ul>
+                                </div>
+                            </div>
+                                
+                           <div class="form-group">
+                                <label class="col-sm-4 control-label"><span class="font-red">*</span>Permanent Address</label>
+                                <div class="col-sm-6">
+                                    @Html.TextBoxFor(model => model.PermanentAddress, new { placeholder = "Permanent Address", required = "required", data_parsley_maxlength = "150", @class = "form-control", data_parsley_id = "4059" })
+                                    <ul class="parsley-errors-list" id="parsley-id-4059"></ul>
+                                </div>
+                            </div>
+                            
+                                
+                          <div class="form-group">
+                           <label for="" class="col-sm-4 control-label"><span class="font-red">*</span>Date of Birth</label>
+                            <div class="col-sm-6">
+                                <div class="input-prepend input-group">
+                                    <span class="add-on input-group-addon">
+                                        <i class="glyph-icon icon-calendar"></i>
+                                    </span>
+                                    <span>
+                                        @Html.TextBoxFor(model => model.DateOfBirth, new { @class = "datepicker form-control", type = "text", required = "required", data_parsley_id = "4059" })
+                                    </span>
+                                        <ul class="parsley-errors-list" id="parsley-id-4059"></ul>
+                                
+                                </div>
+                            </div>
+                        </div>
+                                
+                        <div class="form-group">
+                                <label class="col-sm-4 control-label">                            
+                                    <span class="font-red">*</span>Salary
+                                </label>
+                                <div class="col-sm-6">
+                                    @Html.TextBoxFor(model => model.Salary, new { placeholder = "Salary", required = "required", @class = "form-control", data_parsley_id = "4059" })
+                                    <ul class="parsley-errors-list" id="parsley-id-4059"></ul>
+                                </div>
+                            </div>
+                         <div class="form-group">
+                                <label class="col-sm-4 control-label"><span class="font-red">*</span>Active</label>
+                                <div class="col-sm-1 pull-left">
+                                    @Html.CheckBoxFor(model => model.IsActive, new { @class = "form-control pull-left", data_parsley_id = "4059" })
+                                    <ul class="parsley-errors-list" id="parsley-id-4059"></ul>
+                                </div>
+                         </div>
+                              
+                                
+                            }
+                 
+                            @if (ViewBag.Type == "Customer")
+                            {
+                              @Html.Hidden("DateOfBirth", null)
+                              @Html.Hidden("Password", "customer")
+                          
+                              <div class="form-group">
+                                <label class="col-sm-4 control-label">Preasent Address</label>
+                                <div class="col-sm-6">
+                                    @Html.TextBoxFor(model => model.PresentAddress, new { placeholder = "Present address", data_parsley_maxlength = "150", @class = "form-control", data_parsley_id = "4059" })
+                                    <ul class="parsley-errors-list" id="parsley-id-4059"></ul>
+                                </div>
+                            </div>
+                                
+                           <div class="form-group">
+                                <label class="col-sm-4 control-label">Permanent Address</label>
+                                <div class="col-sm-6">
+                                    @Html.TextBoxFor(model => model.PermanentAddress, new { placeholder = "Permanent Address", data_parsley_maxlength = "150", @class = "form-control", data_parsley_id = "4059" })
+                                    <ul class="parsley-errors-list" id="parsley-id-4059"></ul>
+                                </div>
+                            </div>
+
+
+                            }
+
+
+
+                            @if (ViewBag.Type == "Supplier")
+                            {
+
+                            @Html.Hidden("DateOfBirth", null)
+                            @Html.Hidden("Password", "supplier")
+                            
+                             <div class="form-group">
+                                <label class="col-sm-4 control-label"><span class="font-red">*</span>Supplier Address</label>
+                                <div class="col-sm-6">
+                                    @Html.TextBoxFor(model => model.PermanentAddress, new { placeholder = "Supplier Address", data_parsley_maxlength = "150", required = "required", @class = "form-control", data_parsley_id = "4059" })
+                                    <ul class="parsley-errors-list" id="parsley-id-4059"></ul>
+                                </div>
+                            </div>
+                                
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label"><span class="font-red">*</span>Company Name</label>
+                                <div class="col-sm-6">
+                                    @Html.TextBoxFor(model => model.ReferenceInfo, new { placeholder = "Supplier company name", data_parsley_maxlength = "20", required = "required", @class = "form-control", data_parsley_id = "4059" })
+                                    <ul class="parsley-errors-list" id="parsley-id-4059"></ul>
+                                </div>
+                            </div>
+                                
+                           <div class="form-group">
+                                <label class="col-sm-4 control-label"><span class="font-red">*</span>Company Address</label>
+                                <div class="col-sm-6">
+                                    @Html.TextBoxFor(model => model.PresentAddress, new { placeholder = "Supplier company address", data_parsley_maxlength = "150", required = "required", @class = "form-control", data_parsley_id = "4059" })
+                                    <ul class="parsley-errors-list" id="parsley-id-4059"></ul>
+                                </div>
+                            </div>
+                                                                 
+                            }
+
+
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Description</label>
+                                <div class="col-sm-6">
+                                    @Html.TextAreaFor(model => model.Description, new { data_parsley_maxlength = "150", placeholder = "At most 150 characters", @class = "form-control", data_parsley_id = "7330" })
+                                    <ul class="parsley-errors-list" id="parsley-id-7330"></ul>
+                                </div>
+                            </div>
+
+                        </div>
+
+                     <div class="col-md-4">
+                         <div class="form-group">
+                             <div class="col-md-4">
+                                 <div class="img-bordered img-box-size">
+                                     <img id="blah" src="~/images/img-upload.jpg" class="img-full" />
+                                 </div>                          
+                             </div>                           
+                            
+                         </div>
+
+                         <div class="form-group">
+                             <div class="col-md-4">
+                                 <input type="file" id="file" name="file" onchange="readURL(this);" />
+                              </div>
+                         </div>
+                     </div>
+                       
+                    </div>
+                   
+                    <div class="row bg-default content-box">
+
+                        <label class="col-sm-3 control-label">
+                            <span class="pull-left">
+
+                                @if (ViewBag.Type == "Supplier")
+                                {
+                                    <a class="btn btn-link font-blue" href="/User/Supplier">
+                                        <i class="glyph-icon icon-angle-double-left" title="" data-original-title=".icon-angle-double-left" aria-describedby="tooltip602646">
+                                            Back to List
+                                        </i>
+                                    </a>
+                                }
+                                else if (ViewBag.Type == "Customer")
+                                {
+                                    <a class="btn btn-link font-blue" href="/User/Customer">
+                                        <i class="glyph-icon icon-angle-double-left" title="" data-original-title=".icon-angle-double-left" aria-describedby="tooltip602646">
+                                            Back to List
+                                        </i>
+                                    </a>
+                                }
+                                else if (ViewBag.Type == "Employee")
+                                {
+                                    <a class="btn btn-link font-blue" href="/User/Employee">
+                                        <i class="glyph-icon icon-angle-double-left" title="" data-original-title=".icon-angle-double-left" aria-describedby="tooltip602646">
+                                            Back to List
+                                        </i>
+                                    </a>
+                                }
+
+                            </span>
+                        </label>
+                        <div class="col-sm-4">
+                            <button class="btn btn-lg btn-primary btn-hover" id="btnSubmit">
+                                <span>Save</span>
+                                <i class="glyph-icon icon-check" title="" data-original-title=".icon-check" aria-describedby="tooltip941007"></i>
+                            </button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $(".datepicker").datepicker({ dateFormat: "dd-M-yy" }).val();
+    });
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+
+                //$('#blah')
+                //.attr('src', e.target.result)
+                //.width("100%")
+                //.height("100%");
+
+                $("#blah").attr('src', e.target.result).removeClass("img-full").addClass("img-full");
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+

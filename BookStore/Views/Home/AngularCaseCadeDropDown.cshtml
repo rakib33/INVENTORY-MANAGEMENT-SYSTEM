@@ -1,0 +1,219 @@
+﻿<script src="~/Scripts/angularJs/angular.js"></script>
+<script src="~/Scripts/angularJs/angular-route.js"></script>
+
+<style>
+    input[type="text"].ng-invalid,
+    input[type="password"].ng-invalid,
+    input[type="date"].ng-invalid,
+    input[type="number"].ng-invalid,
+    select.ng-invalid {
+        border-left: 5px solid #ff0000;
+        background-color: #FFEBD6;
+    }
+
+    input[type="text"].ng-valid,
+    input[type="password"].ng-valid,
+    input[type="date"].ng-valid,
+    input[type="number"].ng-valid,
+    select.ng-valid {
+        background-color: #FFFFFF;
+        border-left: 5px solid #088b0b;
+    }
+
+    input[type="text"]:disabled.ng-valid {
+        background-color: #efefef;
+        border: 1px solid #ccc;
+    }
+</style>
+
+<div ng-app="myApp" class="container">
+    <h3>Angularjs Cascading Dropdown/Select</h3>
+    <form class="form-horizontal" ng-controller="dropdownCtrl">
+
+        <div class="form-group">
+            <label for="name" class="col-sm-2 control-label">Customer Name </label>
+            <div class="col-sm-7">
+                <input ng-model="customer.Name"
+                       type="text"
+                       class="form-control"
+                       ng-required="true"
+                       id="name" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="country" class="col-sm-2 control-label">Country </label>
+            <div class="col-sm-7">
+                <select ng-model="customer.Country"
+                        ng-options="obj.id as obj.country for obj in countries"
+                        ng-change="getCountryStates()"
+                        class="form-control"
+                        ng-required="true"
+                        id="country">
+                    <option value="">-- Choose Country --</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="state" class="col-sm-2 control-label">State </label>
+            <div class="col-sm-7">
+                <select ng-model="customer.State"
+                        ng-options="x.Id as x.state for x in sates"
+                        ng-change="getStateCities()"
+                        class="form-control"
+                        ng-required="true"
+                        id="state">
+                    <option value="">-- Choose State --</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="city" class="col-sm-2 control-label">City </label>
+            <div class="col-sm-7">
+                <select ng-model="customer.City"
+                        ng-options="x.Id as x.city for x in cities"
+                        class="form-control"
+                        ng-required="true"
+                        id="city">
+                    <option value="">-- Choose City --</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-lg-offset-2">
+            <button class="btn btn-success">  Save  </button>
+        </div>
+        <div class="form-group">
+            <div class="col-lg-offset-2">
+                <b>name:</b> {{customer.Name}}
+                <b>Country:</b> {{customer.Country}}
+                <b>State:</b> {{customer.State}}
+                <b>City:</b> {{customer.City}}
+            </div>
+        </div>
+
+
+    </form>
+</div>
+
+<script>
+    var myApp = angular.module('myApp', []);
+
+    myApp.controller('dropdownCtrl', ['$scope', 'CustomerService', function ($scope, CustomerService) {
+
+        $scope.customer = {
+            Name: '',
+            Country: '',
+            State: '',
+            City: ''
+        };
+
+        $scope.countries = CustomerService.getCountry();
+
+        $scope.getCountryStates = function () {
+            $scope.sates = CustomerService.getCountryState($scope.customer.Country);
+            $scope.cities = [];
+        }
+
+        $scope.getStateCities = function () {
+            debugger;
+            $scope.cities = CustomerService.getStateCity($scope.customer.State);
+        }
+
+
+    }]);
+
+    myApp.factory("CustomerService", ['$filter', function ($filter) {
+        var service = {};
+
+
+        var countrylist = [
+                  { "id": 1, "country": "USA" },
+                  { "id": 2, "country": "Canada" },
+                  { "id": 3, "country": "India" },
+        ];
+
+        var statelist = [
+          { "Id": 1, "state": "Alaska", "countryId": 1 },
+          { "Id": 2, "state": "California", "countryId": 1 },
+          { "Id": 3, "state": "New York", "countryId": 1 },
+          { "Id": 4, "state": "New Brunswick", "countryId": 2 },
+          { "Id": 5, "state": "Manitoba", "countryId": 2 },
+          { "Id": 6, "state": "Delhi", "countryId": 3 },
+          { "Id": 7, "state": "Bombay", "countryId": 3 },
+          { "Id": 8, "state": "Calcutta", "countryId": 3 }
+        ];
+
+        var citylist = [
+          { "Id": 1, "city": "Anchorage", "stateId": 1 },
+          { "Id": 2, "city": "Fairbanks", "stateId": 1 },
+          { "Id": 3, "city": "Lakes", "stateId": 1 },
+          { "Id": 4, "city": "Palmer", "stateId": 1 },
+          { "Id": 5, "city": "Adelanto", "stateId": 2 },
+          { "Id": 6, "city": "Artesia", "stateId": 2 },
+          { "Id": 7, "city": "Benicia", "stateId": 2 },
+          { "Id": 8, "city": "Clovis", "stateId": 2 },
+          { "Id": 9, "city": "Dublin", "stateId": 2 },
+          { "Id": 10, "city": "Manhattan", "stateId": 3 },
+          { "Id": 11, "city": "Bronx", "stateId": 3 },
+          { "Id": 12, "city": "Brooklyn", "stateId": 3 },
+          { "Id": 13, "city": "Queens", "stateId": 3 },
+          { "Id": 14, "city": "Staten Island", "stateId": 3 },
+          { "Id": 15, "city": "Bathurst", "stateId": 4 },
+          { "Id": 16, "city": "Campbellton", "stateId": 4 },
+          { "Id": 17, "city": "Dieppe", "stateId": 4 },
+          { "Id": 18, "city": "Edmundston", "stateId": 4 },
+          { "Id": 19, "city": "Fredericton", "stateId": 4 },
+          { "Id": 20, "city": "Miramichi", "stateId": 4 },
+          { "Id": 21, "city": "Moncton", "stateId": 4 },
+          { "Id": 22, "city": "Brandon", "stateId": 5 },
+          { "Id": 23, "city": "Dauphin", "stateId": 5 },
+          { "Id": 24, "city": "Flin Flon", "stateId": 5 },
+          { "Id": 25, "city": "Morden", "stateId": 5 },
+          { "Id": 26, "city": "Portage la Prairie", "stateId": 5 },
+          { "Id": 27, "city": "Selkirk", "stateId": 5 },
+          { "Id": 28, "city": "Steinbach", "stateId": 5 },
+          { "Id": 29, "city": "Thompson", "stateId": 5 },
+          { "Id": 30, "city": "Winkler", "stateId": 5 },
+          { "Id": 31, "city": "South Delhi", "stateId": 6 },
+          { "Id": 32, "city": "North Delhi", "stateId": 6 },
+          { "Id": 33, "city": "East Delhi", "stateId": 6 },
+          { "Id": 34, "city": "West Delhi", "stateId": 6 },
+          { "Id": 35, "city": "Old Delhi", "stateId": 6 },
+          { "Id": 36, "city": "New Delhi", "stateId": 6 },
+          { "Id": 37, "city": "Yamuna Paar", "stateId": 6 },
+          { "Id": 38, "city": "Chembur", "stateId": 7 },
+          { "Id": 39, "city": "Borivali West", "stateId": 7 },
+          { "Id": 40, "city": "Ghatkopar West", "stateId": 7 },
+          { "Id": 41, "city": "Juhu", "stateId": 7 },
+          { "Id": 42, "city": "Mira Road", "stateId": 7 },
+          { "Id": 43, "city": "Powai", "stateId": 7 },
+          { "Id": 44, "city": "Virar West", "stateId": 7 },
+          { "Id": 45, "city": "Rajarhat", "stateId": 8 },
+          { "Id": 46, "city": "Park Street", "stateId": 8 },
+          { "Id": 47, "city": "Golpark", "stateId": 8 },
+          { "Id": 48, "city": "Chandan Nagar", "stateId": 8 }
+        ];
+
+        service.getCountry = function () {
+            return countrylist;
+        };
+
+        service.getCountryState = function (countryId) {
+            var states = ($filter('filter')(statelist, { countryId: countryId }));
+            return states;
+        };
+
+
+        service.getStateCity = function (stateId) {
+
+            var items = ($filter('filter')(citylist, { stateId: stateId }));
+            return items;
+        };
+
+        return service;
+
+
+    }]);
+</script>

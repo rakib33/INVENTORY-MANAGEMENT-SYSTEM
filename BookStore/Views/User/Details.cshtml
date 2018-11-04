@@ -1,0 +1,249 @@
+﻿@model BookStore.Models.Infrastructure.ApplicationUser
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div class="panel">
+    <div class="panel-body">
+
+        <div class="example-box-wrapper">
+
+            <div class="alert alert-notice">
+                <div class="bg-blue alert-icon">
+                    <i class="glyph-icon icon-info"></i>
+                </div>
+                <div class="alert-content">
+                    <h4 class="alert-title">@*@Html.DisplayFor(model => model.Name)*@</h4>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Name)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Name)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.NID)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.NID)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Phone)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Phone)
+                                </dd>
+
+                                @if (Model.UserType == "Supplier")
+                                {
+
+                                    <dt>
+                                        Supplier Address
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.PermanentAddress)
+                                    </dd>
+
+                                    <dt>
+                                        Company name
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.ReferenceInfo)
+                                    </dd>
+
+                                    <dt>
+                                        Company Address
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.PresentAddress)
+                                    </dd>
+                                }
+
+                                @if (ViewBag.Type == "Employee")
+                                {
+
+                                    <dt>
+                                        Blood Group
+                                    </dt>
+                                    <dd>
+                                        @Html.DisplayFor(model => model.BloodGroup)
+                                    </dd>
+
+                                    <dt>
+                                        Present Address
+                                    </dt>
+                                    <dd>
+                                        @Html.DisplayFor(model => model.PresentAddress)
+                                    </dd>
+
+                                    <dt>
+                                        Permanent Address
+                                    </dt>
+                                    <dd>
+                                        @Html.DisplayFor(model => model.PermanentAddress)
+                                    </dd>
+
+                                    <dt>
+                                        Birth Date
+                                    </dt>
+                                    <dd>
+                                        @Html.DisplayFor(model => model.DateOfBirth)
+                                    </dd>
+
+                                    <dt>
+                                        Salary
+                                    </dt>
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Salary)
+                                    </dd>
+
+                                    <dt>
+                                        Status
+                                    </dt>
+                                    <dd>
+                                        @Html.DisplayFor(model => model.IsActive)
+                                    </dd>
+
+
+
+                                }
+
+                                @if (ViewBag.Type == "Customer")
+                                {
+
+                                    <dt>
+                                        Present Address
+                                    </dt>
+                                    <dd>
+                                        @Html.DisplayFor(model => model.PresentAddress)
+                                    </dd>
+
+                                    <dt>
+                                        Permanent Address
+                                    </dt>
+                                    <dd>
+                                        @Html.DisplayFor(model => model.PermanentAddress)
+                                    </dd>
+
+                                }
+
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Description)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Description)
+                                </dd>
+
+
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.CreatedBy)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.CreatedBy)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.CreatedDate)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.CreatedDate)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.UpdateBy)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.UpdateBy)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.UpdateDate)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.UpdateDate)
+                                </dd>
+
+                            </dl>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    @*<img src="~/images/img-upload.jpg" />*@
+                                    <img id="blah" src="@Url.Action("GetImage", "Image", new { id = Model.Id })" width="200" height="200" />
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="row bg-default content-box">
+
+                <label class="col-sm-3 control-label">
+                    <span class="pull-left">
+
+                        @if (ViewBag.Type == "Supplier")
+                        {
+                            <a class="btn btn-link font-blue" href="/User/Supplier">
+                                <i class="glyph-icon icon-angle-double-left" title="" data-original-title=".icon-angle-double-left" aria-describedby="tooltip602646">
+                                    Back to List
+                                </i>
+                            </a>
+                        }
+                        else if (ViewBag.Type == "Customer")
+                        {
+                            <a class="btn btn-link font-blue" href="/User/Customer">
+                                <i class="glyph-icon icon-angle-double-left" title="" data-original-title=".icon-angle-double-left" aria-describedby="tooltip602646">
+                                    Back to List
+                                </i>
+                            </a>
+                        }
+                        else if (ViewBag.Type == "Employee")
+                        {
+                            <a class="btn btn-link font-blue" href="/User/Employee">
+                                <i class="glyph-icon icon-angle-double-left" title="" data-original-title=".icon-angle-double-left" aria-describedby="tooltip602646">
+                                    Back to List
+                                </i>
+                            </a>
+                        }
+
+                    </span>
+                </label>
+                @*<div class="col-sm-4">
+                    <button class="btn btn-lg btn-primary btn-hover" id="btnSubmit">
+                        <span>Save</span>
+                        <i class="glyph-icon icon-check" title="" data-original-title=".icon-check" aria-describedby="tooltip941007"></i>
+                    </button>
+                </div>*@
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+

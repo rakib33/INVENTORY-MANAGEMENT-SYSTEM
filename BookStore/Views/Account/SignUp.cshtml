@@ -1,0 +1,175 @@
+﻿@model BookStore.Models.RegisterViewModel
+@{
+    ViewBag.Title = "SignUp";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+
+
+   <div class="col-md-6 center-margin">
+    <h3 class="text-center pad15B font-gray text-transform-upr font-size-20">Inventory Management <span class="opacity-80">v1.0</span></h3>
+       <div class="content-box wow bounceInDown modal-content border-top border-red clearfix ">          
+           
+           <div class="content-box-wrapper">                             
+
+               @using (Html.BeginForm("SignUp", "Account", FormMethod.Post, new { id = "demo-form", data_parsley_validate = "", novalidate = "", role = "form" }))
+               {
+                   @Html.AntiForgeryToken()
+
+                      <div class="login-error">
+                        @Html.ValidationSummary(true)
+                    </div>
+                   
+                   <div id="login-form">
+                       <div class="pad20A col-md-12">
+
+                           <div class="form-group">
+                               <label for="exampleInputEmail1">Name:</label>
+                               <div class="input-group input-group-lg">
+                                   <span class="input-group-addon addon-inside bg-white font-primary">
+                                       <i class="glyph-icon icon-user"></i>
+                                   </span>
+                                   @Html.TextBoxFor(m => m.FirstName, new { data_parsley_maxlength = "8", data_parsley_type = "fname", required = "", @class = "form-control fname", data_parsley_id = "3520", placeholder = "First name" })
+                                   @Html.TextBoxFor(m => m.LastName, new { data_parsley_maxlength = "8", data_parsley_type = "fname", required = "", @class = "form-control lname", data_parsley_id = "3521", placeholder = "Last name" })
+
+                                   <div class="row">
+                                       <div class="col-md-6 fname">
+                                           <ul class="parsley-errors-list login-error" id="parsley-id-3520">
+                                               @Html.ValidationMessageFor(m => m.LastName)
+                                           </ul>
+                                       </div>
+                                       <div class="col-md-6 fname">
+                                           <ul class="parsley-errors-list login-error" id="parsley-id-3521">
+                                               @Html.ValidationMessageFor(m => m.LastName)
+                                           </ul>
+                                       </div>
+                                      
+                                   </div>
+
+                                   @*<ul class="parsley-errors-list login-error" id="parsley-id-3520">
+                                       @Html.ValidationMessageFor(m => m.FirstName)
+                                       <br />
+                                       @Html.ValidationMessageFor(m => m.LastName)
+                                   </ul>*@
+                                  
+                               </div>
+                           </div>
+                           <div class="form-group">
+                               <label for="exampleInputEmail1">User Name:</label>
+                               <div class="input-group input-group-lg">
+                                   <span class="input-group-addon addon-inside bg-white font-primary">
+                                       <i class="glyph-icon icon-user"></i>
+                                   </span>
+                                   @Html.TextBoxFor(m => m.UserName, new { data_parsley_maxlength = "8", required = "", @class = "form-control", data_parsley_id = "3520", placeholder = "Enter User Name" })
+
+                                   <ul class="parsley-errors-list login-error" id="parsley-id-3520">
+                                       @Html.ValidationMessageFor(m => m.UserName)
+                                   </ul>
+                               </div>
+                           </div>
+                           @*<div class="form-group">
+                               <label for="exampleInputEmail1">Email address:</label>
+                               <div class="input-group input-group-lg">
+                                   <span class="input-group-addon addon-inside bg-white font-primary">
+                                       <i class="glyph-icon icon-envelope-o"></i>
+                                   </span>
+                                   @Html.TextBoxFor(m => m.UserName, new {data_parsley_type="email", required="", @class="form-control", data_parsley_id="3520", placeholder="Enter email" })
+                                
+                                   <ul class="parsley-errors-list login-error" id="parsley-id-3520">
+                                       @Html.ValidationMessageFor(m => m.UserName)
+                                   </ul>
+                                </div>
+                           </div>*@
+                           <div class="form-group">
+                               <label for="exampleInputPassword1">Password:</label>
+                               <div class="input-group input-group-lg">
+                                   <span class="input-group-addon addon-inside bg-white font-primary">
+                                       <i class="glyph-icon icon-unlock-alt"></i>
+                                   </span>
+                                   @Html.PasswordFor(m => m.Password, new {data_parsley_minlength="6", type="password", id="ps1", required="", @class="form-control", data_parsley_id="9330", placeholder="Password" })
+                                   <ul class="parsley-errors-list login-error" id="parsley-id-9330">
+                                    @Html.ValidationMessageFor(m => m.Password)
+                                   </ul>
+                                 
+                               </div>
+                           </div>
+
+                           <div class="form-group">
+                               <label for="exampleInputPassword1">Confirm Password:</label>
+                               <div class="input-group input-group-lg">
+                                   <span class="input-group-addon addon-inside bg-white font-primary">
+                                       <i class="glyph-icon icon-unlock-alt"></i>
+                                   </span>
+                                   @Html.PasswordFor(m => m.ConfirmPassword, new {type="password",data_parsley_equalto="#ps1", required="", @class="form-control", data_parsley_id="9391",placeholder="Confirm Password" })
+                                   <ul class="parsley-errors-list login-error" id="parsley-id-9391"></ul>                               
+                                   
+                               </div>
+                           </div>
+
+
+                           <div class="row mrg15B">
+                               <div class="checkbox-primary col-md-10" style="height: 20px;">
+                                   <label>
+                                       <input type="checkbox" id="loginCheckbox1" class="custom-checkbox">
+                                       Remember me
+                                   </label>
+                               </div>
+                           </div>
+                           <div class="form-group">
+                               <button type="submit" class="btn btn-block btn-blue-alt">Sign Up</button>
+                           </div>
+                           <div class="form-group">
+                            @Html.ActionLink("Sign In", "Login", "Account", new { @class = "btn btn-block btn-primary" })                          
+                            </div>
+
+                    </div>
+                   </div>
+               }
+
+               @*<div class="col-md-4 float-right" style="height: 287px;">
+
+                   <div class="center-vertical">
+                       <div class="center-content">
+
+                           <div class="col-md-4">
+                               <section id="socialLoginForm">
+                                   @Html.Partial("_ExternalLoginsListPartial", new { Action = "ExternalLogin", ReturnUrl = ViewBag.ReturnUrl })
+                               </section>
+                           </div>
+
+                           <a href="#" class="btn btn-block btn-md bg-facebook">
+                               <span class="glyph-icon icon-separator">
+                                   <i class="glyph-icon icon-facebook"></i>
+                               </span>
+                               <span class="button-content">
+                                   Connect with Facebook
+                               </span>
+                           </a>
+                           <div class="mrg10A"></div>
+                           <a href="#" class="btn btn-block btn-md bg-twitter">
+                               <span class="glyph-icon icon-separator">
+                                   <i class="glyph-icon icon-twitter"></i>
+                               </span>
+                               <span class="button-content">
+                                   Connect with Twitter
+                               </span>
+                           </a>
+                           <div class="mrg10A"></div>
+                           <a href="#" class="btn btn-block btn-md bg-google">
+                               <span class="glyph-icon icon-separator">
+                                   <i class="glyph-icon icon-google-plus"></i>
+                               </span>
+                               <span class="button-content">
+                                   Connect with Google+
+                               </span>
+                           </a>
+
+                       </div>
+                   </div>
+
+               </div>*@
+
+           </div>
+       </div>
+
+</div>

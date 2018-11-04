@@ -1,0 +1,336 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/angular-route.js"></script>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <script src="Scripts/bootstrap.js"></script>
+</head>
+<body ng-app="CrudDemoApp">
+    <!--<div class="container-fluid" style="margin-left: 30px; width: 400px">
+        <h3>Add Player</h3>
+        <b>{{message}}</b>
+        <br />
+
+        <div>
+            <ol>
+                <li ng-repeat="item in Listauthors">
+                    {{'FirstName:'+item.FirstName+',LastName:'+item.LastName}}
+
+                </li>
+            </ol>
+        </div>
+
+        <form name="AddAuthorForm" ng-submit="AddAuthor($scope.author);" class="btn-group-lg" style="margin-top: 20px">
+
+
+            <div class="form-group">
+                <label for="player.Name">Initials</label>
+                <input type="text" class="form-control" ng-model="author.Initials" required />
+            </div>
+
+            <div class="form-group">
+                <label for="player.Name">First Name</label>
+                <input type="text" class="form-control" ng-model="author.FirstName" required />
+            </div>
+            <div class="form-group">
+                <label for="player.Club">Last Name</label>
+                <input type="text" class="form-control" ng-model="author.LastName" required />
+            </div>
+            <div class="form-group">
+                <label for="player.Name">Zip Code</label>
+                <input type="text" class="form-control" ng-model="author.ZipCode" required />
+            </div>
+
+            <div class="form-group">
+                <label for="player.Name">Address</label>
+                <input type="text" class="form-control" ng-model="author.Address" required />
+            </div>
+
+            <div class="form-group">
+                <label for="player.Country">Country</label>
+                <input type="text" class="form-control" ng-model="author.Country" required />
+            </div>
+
+            <div class="form-group">
+                <input type="submit" class="btn btn-success" value="Submit" ng-disabled="AddAuthorForm.$invalid" />
+            </div>
+        </form>
+        <br />
+        <a href="/" class="btn btn-primary">Back to main</a>
+
+    </div>-->
+
+    <p><a data-ng-click="showadd()" href="javascript:;" class="btn btn-primary">Add New User</a></p>
+
+    <div class="modal fade" id="userModel" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                    <h4 class="modal-title" id="myModalLabel" ng-hide="editMode">Add User</h4>
+                    <h4 class="modal-title" id="myModalLabel" ng-show="editMode">Edit User</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form" name="adduserform">
+                        <div class="form-group">
+                            <label for="title" class="col-sm-2 control-label">Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" data-ng-model="user.Name" class="form-control" id="title" placeholder="Your Name" required title="Enter your name" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="title" class="col-sm-2 control-label">Address</label>
+                            <div class="col-sm-10">
+                                <input type="text" data-ng-model="user.Address" class="form-control" id="title" placeholder="Your Address" required title="Enter your address" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="title" class="col-sm-2 control-label">ContactNo</label>
+                            <div class="col-sm-10">
+                                <input type="text" data-ng-model="user.ContactNo" class="form-control" id="title" placeholder="Your ContactNo" required title="Enter your contactno" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <span data-ng-hide="editMode">
+                                    <input type="submit" value="Add" ng-disabled="adduserform.$invalid" data-ng-click="add()" class="btn btn-primary" />
+                                </span>
+                                <span data-ng-show="editMode">
+                                    <input type="submit" value="Update" ng-disabled="adduserform.$invalid" data-ng-click="update()" class="btn btn-primary" />
+                                </span>
+                                <input type="button" value="Cancel" data-ng-click="cancel()" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="viewModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                    <h4 class="modal-title" id="myModalLabel">View User</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form" name="viewuser">
+                        <div class="form-group">
+                            <label for="Name" class="col-sm-2 control-label">Name</label>
+                            <div class="col-sm-10">
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Address" class="col-sm-2 control-label">Address</label>
+                            <div class="col-sm-10">
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="ContactNo" class="col-sm-2 control-label">ContactNo</label>
+                            <div class="col-sm-10">
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+      <div class="modal fade" id="userModel" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                    <h4 class="modal-title" id="myModalLabel" ng-hide="editMode">Add User</h4>
+                    <h4 class="modal-title" id="myModalLabel" ng-show="editMode">Edit User</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form" name="adduserform">
+                        <div class="form-group">
+                            <label for="title" class="col-sm-2 control-label">Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" data-ng-model="user.Name" class="form-control" id="title" placeholder="Your Name" required title="Enter your name" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="title" class="col-sm-2 control-label">Address</label>
+                            <div class="col-sm-10">
+                                <input type="text" data-ng-model="user.Address" class="form-control" id="title" placeholder="Your Address" required title="Enter your address" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="title" class="col-sm-2 control-label">ContactNo</label>
+                            <div class="col-sm-10">
+                                <input type="text" data-ng-model="user.ContactNo" class="form-control" id="title" placeholder="Your ContactNo" required title="Enter your contactno" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <span data-ng-hide="editMode">
+                                    <input type="submit" value="Add" ng-disabled="adduserform.$invalid" data-ng-click="add()" class="btn btn-primary" />
+                                </span>
+                                <span data-ng-show="editMode">
+                                    <input type="submit" value="Update" ng-disabled="adduserform.$invalid" data-ng-click="update()" class="btn btn-primary" />
+                                </span>
+                                <input type="button" value="Cancel" data-ng-click="cancel()" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+
+    <script>
+        var app = angular.module("CrudDemoApp", []);
+
+        app.controller('userController', function PostController($scope, userFactory) {
+            $scope.users = [];
+            $scope.user = null;
+            $scope.editMode = false;
+
+            //Other code has been removed for clarity
+
+            //get User
+            $scope.get = function () {
+                $scope.user = this.user;
+                $('#viewModal').modal('show');
+            };
+        });
+
+        app.controller('userController', function PostController($scope, userFactory) {
+            $scope.users = [];
+            $scope.user = null;
+            $scope.editMode = false;
+
+            //Other code has been removed for clarity
+            //update user
+            $scope.update = function () {
+                var currentUser = this.user;
+                userFactory.updateUser(currentUser).success(function (data) {
+                    currentUser.editMode = false;
+
+                    $('#userModel').modal('hide');
+                }).error(function (data) {
+                    $scope.error = "An Error has occured while Updating user! " + data.ExceptionMessage;
+                });
+            };
+
+            $scope.showedit = function () {
+                $('#userModel').modal('show');
+            };
+
+            $scope.cancel = function () {
+                $scope.user = null;
+                $('#userModel').modal('hide');
+            }
+        });
+
+
+
+        app.controller('userController', function PostController($scope, userFactory) {
+            $scope.users = [];
+            $scope.user = null;
+            $scope.editMode = false;
+
+            //Other code has been removed for clarity
+            // delete User
+            $scope.delete = function () {
+                currentUser = $scope.user;
+                userFactory.deleteUser(currentUser).success(function (data) {
+                    $('#confirmModal').modal('hide');
+                    $scope.users.pop(currentUser);
+
+                }).error(function (data) {
+                    $scope.error = "An Error has occured while Deleting user! " + data.ExceptionMessage;
+
+                    $('#confirmModal').modal('hide');
+                });
+            };
+
+            //Model popup events
+            $scope.showconfirm = function (data) {
+                $scope.user = data;
+                $('#confirmModal').modal('show');
+            };
+        });
+
+
+ //       app.controller("MainController", function ($scope, AuthorService) {
+ //           $scope.message = "Main Controller";
+
+ //           AuthorService.GetAuthorsFromDB().then(function (d) {
+ //               if (d.data.msg == "ok")
+ //                   $scope.Listauthors = d.data.list;
+ //               else
+ //                   $scope.message = d.data.msg;
+ //           });
+
+ //           //$scope.page.setTitle($scope.page.setTitle);
+ //       }).
+ //    controller("AddAuthorController", function ($scope, AuthorService) {
+ //        $scope.message = "Add Author Details";
+
+ //        $scope.AddAuthor = function () {
+ //            AuthorService.AddAuthor($scope.author);
+ //        }
+ //    }).
+ //    //controller("EditPlayerController", function ($scope, AuthorService, $routeParams) {
+ //    //    $scope.message = "Edit Player Details";
+
+ //    //    var id = $routeParams.id;
+ //    //    playerService.GetPlayerById(id).then(function (d) {
+ //    //        $scope.player = d.data.player;
+ //    //    });
+
+ //    //    $scope.UpdatePlayer = function () {
+ //    //        playerService.UpdatePlayer($scope.player);
+ //    //    }
+ //    //}).
+ //factory("AuthorService", ["$http", function ($http) {
+ //    var fac = {};
+
+ //    fac.GetAuthorsFromDB = function () {
+ //        return $http.get("/Player/GetPlayers");
+ //    }
+
+ //    //fac.GetPlayerById = function (id) {
+ //    //    return $http.get("/Player/GetPlayerById", { params: { id: id } });
+ //    //}
+
+ //    fac.AddPlayer = function (player) {
+ //        //alert(player.Name);
+ //        $http.post("/Player/AddPlayer", player).then(function (response) {
+ //            alert(response.data.status);
+ //        });
+ //    }
+ //    //fac.UpdatePlayer = function (player) {
+ //    //    $http.post("Player/UpdatePlayer", player).then(function (response) {
+ //    //        alert(response.data.result);
+ //    //    });
+ //    //}
+ //    //fac.DeletePlayer = function (id) {
+ //    //    $http.post("Player/DeletePlayer", { id: id }).then(function (response) {
+ //    //        alert(response.data.result);
+ //    //    });
+ //    //}
+
+ //    return fac;
+ //}])
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,162 @@
+﻿@model BookStore.Models.Inventory.PurchaseViewModel
+
+@*below is for jquery DatePicker*@
+<link href="~/Content/jquery-ui.css" rel="stylesheet" />
+@*<script src="~/Scripts/jquery-1.12.4.js"></script>*@
+<script src="~/Scripts/jquery-ui.js"></script>
+
+
+
+<div id="brandId">
+    <div id="page-title">
+        <h2>product Purchase Forms</h2>
+        <h6> You can add your Purchase product.</h6>
+    </div>
+
+    <div class="panel">
+        <div class="panel-body">
+
+            <div class="example-box-wrapper">
+                @using (Html.BeginForm("Create", "InvPurchase", FormMethod.Post, new { @class = "form-horizontal bordered-row", id = "purchase-form", data_parsley_validate = "", novalidate = "" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="row">
+                        <div class="col-md-12 font-red">
+                            @Html.ValidationSummary(true)
+                        </div>
+                    </div>                    
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label"><span class="red">*</span>Invoice/Chalan No</label>
+                                <div class="col-md-6">
+                                    @Html.TextBoxFor(model => model.Invoice, new { required = "required", Value = ViewBag.InvoiceNo, @readonly = "readonly", @class = "form-control" })
+                                    <ul class="parsley-errors-list" id="parsley-id-4059"></ul>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label"><span class="red">*</span>Supplier Name</label>
+                                <div class="col-sm-6">
+                                    @Html.DropDownList("SupplierId", (IEnumerable<SelectListItem>)ViewBag.Supplier_Id, "Select Supplier", new { @class = "form-control", required = "" })
+                                    <ul class="parsley-errors-list" id="parsley-id-7330"></ul>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+
+                                @*<label class="col-sm-6 control-label"><span class="red">*</span>Invoice/Chalan Date</label>
+                                <div class="col-sm-6">
+                                      @Html.TextBoxFor(model => model.InvoiceDate, new { required = "required", @class = "form-control datepicker" })
+                                    <ul class="parsley-errors-list" id="parsley-id-7330"></ul>
+                                </div>*@
+
+                                <label class="col-sm-6 control-label"><span class="red">*</span>Invoice/Chalan Date</label>
+                                <div class="col-sm-6">
+                                    <div class="input-prepend input-group">
+                                        <span class="add-on input-group-addon">
+                                            <i class="glyph-icon icon-calendar"></i>
+                                        </span>
+                                        <span>
+                                            @Html.TextBoxFor(model => model.InvoiceDate, new { required = "required", @class = "form-control datepicker" })
+                                        </span>
+                                        <ul class="parsley-errors-list" id="parsley-id-4059"></ul>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a id="addNew" class="btn btn-sm btn-primary ra-100" href="#">
+                                <i class="glyph-icon icon-plus" title="" data-original-title=".icon-plus-square" aria-describedby="tooltip941007">
+                                    Add Product
+                                </i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row margin-top-05">
+                        <div class="col-md-12">
+                            <table id="PurchaseTable" class="table table-striped table-bordered dt-responsive nowrap" width="100%" border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <th style="width:2%">Sl No</th>
+                                    <th style="width:14%">Main Catagory</th>
+                                    <th style="width:14%">Sub Catagory</th>
+                                    <td style="width:14%">Product</td>
+                                    <th style="width:6%">Quantity</th>
+                                    <th style="width:6%">Buy Rate</th>
+                                    <th style="width:8%">Buy Amount</th>
+                                    <th style="width:8%">Sale Rate</th>
+                                    <th style="width:8%">Sale Amount</th>
+                                    <th style="width:10%">Status</th>
+                                    
+                                </tr>
+                                @if (Model != null && Model.Purchase.Count > 0)
+                                {
+                                    int j = 0;
+                                    foreach (var i in Model.Purchase)
+                                    {
+                                            <tr style="border:0px">
+                                            <td>@(j+1)</td>                                           
+                                            <td>@Html.DropDownListFor(a => a.Purchase[j].MainCatagoryId, (IEnumerable<SelectListItem>)ViewBag.MainCatagory, "--select catagory--", new { id = "Purchase[" + j + "]MainCatagoryId", @class = "form-control", @required = "", onchange = "GetSubCatagory(this.id)" })</td>
+                                            <td>@Html.DropDownListFor(a => a.Purchase[j].SubCatagoryId, new SelectList(string.Empty, "Value", "Text"), "Select SubCatagory", new { @class = "form-control", required = "", onchange = "getProduct(this.id)" })</td>
+                                            <td>@Html.DropDownListFor(a => a.Purchase[j].Product_Id, new SelectList(string.Empty, "Value", "Text"), "Select Product", new { @class = "form-control myclass", required = "", onchange = "ResetAll(this.id)" })</td>
+                                            <td>@Html.TextBoxFor(a => a.Purchase[j].Qty, new { id = "Purchase[" + j + "]Qty", @class = "form-control decimal", @required = "required", onkeyup = "getRate(this.id)" })</td>
+                                            <td>@Html.TextBoxFor(a => a.Purchase[j].BuyRate, new { id = "Purchase[" + j + "]BuyRate", @class = "form-control decimal", @required = "required", onkeyup = "ChangeTotalAmt(this.id)" })</td> 
+                                            <td>@Html.TextBoxFor(a => a.Purchase[j].BuyTotal, new { id = "Purchase[" + j + "]BuyTotal", @class = "form-control", @required = "required", @readonly = "readonly" })</td>
+                                            <td>@Html.TextBoxFor(a => a.Purchase[j].SaleRate, new { id = "Purchase[" + j + "]SaleRate", @class = "form-control", @required = "required", @readonly = "readonly" })</td>
+                                            <td>@Html.TextBoxFor(a => a.Purchase[j].SaleTotal, new { id = "Purchase[" + j + "]SaleTotal", @class = "form-control", @required = "required", @readonly = "readonly" })</td>
+                                            <td>@Html.DropDownListFor(a => a.Purchase[j].Status, (IEnumerable<SelectListItem>)ViewBag.Status, "--select status--", new { id = "Purchase[" + j + "]Status", @class = "form-control", style = "width:100%", @required = "required" })</td>
+                                            @*<td>
+                                                @if (j > 0)
+                                                {
+                                                    <a class="btn btn-purple ra-100" href="#" onclick="DeleteRow(this)">
+                                                        <i class="glyph-icon icon-minus-square" title="" data-purchase-title=".icon-minus-square" aria-describedby="tooltip941007">
+                                                            Remove
+                                                        </i>
+                                                    </a>
+                                                }
+                                            </td>*@
+                                        </tr>
+                                                j++;
+                                    }
+                                }
+                            </table>
+                        </div>
+                    </div>
+                                      
+                    <div class="row bg-default content-box">
+                        <label class="col-sm-3 control-label">
+                            <span class="pull-left">
+                                <a class="btn btn-link font-blue" href="/InvPurchase/Index">
+                                    <i class="glyph-icon icon-angle-double-left" title="" data-original-title=".icon-angle-double-left" aria-describedby="tooltip602646">
+                                        Back to List
+                                    </i>
+                                </a>
+                            </span>
+                        </label>
+                        <div class="col-sm-4">
+                            <button class="btn btn-lg btn-primary btn-hover" id="btnSubmit">
+                                <span>Save</span>
+                                <i class="glyph-icon icon-check" title="" data-original-title=".icon-check" aria-describedby="tooltip941007"></i>
+                            </button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    $(function () {
+        $(".datepicker").datepicker({ dateFormat: "dd-M-yy", maxDate: '0' }).val();
+    });
+</script>
+<script src="~/Scripts/PurchaseEdit.js"></script>
+<script src="~/Scripts/input_validation.js"></script>

@@ -1,0 +1,149 @@
+﻿@model IEnumerable<BookStore.Models.Infrastructure.ApplicationUser>
+@{
+    ViewBag.Title = "Customer";
+    TempData["type"] = ViewBag.type;
+    string Type = ViewBag.type;
+}
+
+
+<div id="page-title">
+    <h3>Customer List</h3>
+    <h6>Find out all Customer here.</h6>
+</div>
+
+<div class="panel">
+    <div class="panel-body">
+        <div class="example-box-wrapper">
+
+            <a class="btn btn-primary btn-hover" href="/User/Create?type=Customer">
+                <span>Add Customer</span>
+                <i class="glyph-icon icon-plus" title="" data-original-title=".icon-plus" aria-describedby="tooltip941007">
+                </i>
+            </a>
+         
+            <h3 class="title-hero">
+                @Html.Raw(ViewBag.message)
+            </h3>
+            
+            <div id="datatable-responsive_wrapper" class="dataTables_wrapper form-inline margin-top-05">
+                <table id="exampleCustomer" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th style="width:5px" class="all">Sl No</th>
+                                <th>User Image</th>
+                                <th class="all">Name</th>
+                                <th>NID</th>
+                                <th>Phone</th>                               
+                                <th>Country</th>
+                                <th class="all">Link</th>
+                                <th class="none">Created By</th>
+                                <th class="none">Created Date</th>      
+                            </tr>
+                        </thead>
+
+
+                    </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    function GetType() {
+        return @Type;
+    }
+
+    function GetCustomerInfo() {
+        try {
+
+            var _url = "/User/LoadData?UserType=Customer";
+            var t = $('#exampleCustomer').DataTable({
+                //for row index
+                "columnDefs": [{
+                    "targets": [0]
+                },
+                ],
+
+                //for only 2nd column order.ommit this so any column now searcable
+                "order": [[1, 'asc']],
+                "destroy": true, //must to destroy after load to avoid 'cannot reinitialise datatable' problem
+                "processing": true, // for show progress bar
+                "serverSide": true, // for process server side
+                "filter": false, // this is for disable filter (search box)
+                "orderMulti": false, // for disable multiple column at once
+                //"lengthChange": false, //stop filter by 10,15,20,50 row on per page
+
+
+                "ajax": {
+                    "url": _url,
+                    "type": "POST",
+                    "datatype": "json"
+                },
+
+
+                "columns": [
+                       {
+                           "data": null, "name": "Sl No", "display": "none",
+                           render: function (data, type, row, meta) {
+                               return meta.row + meta.settings._iDisplayStart + 1;
+                           }
+                       },   // it is Sr No and data=null I set to prevent display error alert datatables requested unknown parameter '0' for row 0 column 0, also should Display:none
+
+                        {
+                            "data": "Id", "name": "User Image", "autoWidth": true,
+                            "render": function (data, type, JsonResultRow, meta) {
+                                return '<img class="img-td" src="/Image/GetImage?id=' + data + '">'; ///Image/GetImage?id=' + data + '
+
+                            }
+                        },
+                        { "data": "UserName", "name": "Name", "autoWidth": true },
+                        { "data": "NID", "name": "NID", "autoWidth": true },
+
+                        { "data": "Phone", "name": "Phone", "autoWidth": true },
+
+                        { "data": "Country", "name": "Country", "autoWidth": true },
+                        {
+                            "data": "Id", "name": "Link", "display": "none",
+                            "render": function (data, type, row, meta) {
+                                if (type === 'display') {
+
+                                    data = '<a href="/User/Edit?id=' + data + '&type=Customer" class="btn btn-sm btn-default font-green"><i class="glyph-icon icon-edit" title="" data-original-title=".icon-edit"></i></a>' +
+                                        '<a href="/User/Details?id=' + data + '&type=Customer" class="btn btn-sm btn-default font-green"><i class="glyph-icon icon-reorder" title="" data-original-title=".icon-ellipsis-v"></i></a>';
+
+                                }
+                                return data;
+                            }
+                        },
+
+                        { "data": "CreatedBy", "name": "Created By", "autoWidth": true },
+                        {
+                            "data": "CreatedDate", "name": "Created Date", "autoWidth": true,
+                            "render": function (d) {
+                                return moment(d).format("DD-MMM-YYYY");  //Do MMM YYYY =>11th Sep 02017
+                            }
+                        },
+
+                ]
+            });
+
+            //t.on('order.dt', function () {
+            //    t.column(0).nodes().each(function (cell, i) {
+            //        cell.innerHTML = i + 1;
+            //    });
+            //}).draw();
+        }
+        catch (err) {
+            alert(err.message);
+        }
+    }
+
+    $(document).ready(function () {
+
+        GetCustomerInfo();
+    });
+
+</script>
+
+

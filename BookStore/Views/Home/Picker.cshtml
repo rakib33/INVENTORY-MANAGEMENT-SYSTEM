@@ -1,0 +1,219 @@
+﻿
+
+        
+        <!-- Bootstrap Datepicker -->
+        <!--<link rel="stylesheet" type="text/css" href="../../assets/widgets/datepicker/datepicker.css">-->
+        <script src="~/assets/widgets/datepicker/datepicker.js"></script>
+     
+        <script type="text/javascript">
+            /* Datepicker bootstrap */
+
+            $(function () {
+                "use strict";
+                $('.bootstrap-datepicker').bsdatepicker({
+                    format: 'm-dd-yy'
+                   
+                });
+            });
+
+       
+
+        </script>
+
+        <!-- jQueryUI Datepicker -->
+        <!--<link rel="stylesheet" type="text/css" href="../../assets/widgets/datepicker-ui/datepicker.css">-->
+        @*<script src="~/assets/widgets/datepicker-ui/datepicker.js"></script>
+
+        <script src="~/assets/widgets/datepicker-ui/datepicker-demo.js"></script>*@
+  
+
+        <!-- Bootstrap Daterangepicker -->
+        <!--<link rel="stylesheet" type="text/css" href="../../assets/widgets/daterangepicker/daterangepicker.css">-->
+        @*<script src="~/assets/widgets/daterangepicker/moment.js"></script>
+        <script src="~/assets/widgets/daterangepicker/daterangepicker.js"></script>
+        <script src="~/assets/widgets/daterangepicker/daterangepicker-demo.js"></script>*@
+        
+        <!-- Bootstrap Timepicker -->
+        <!--<link rel="stylesheet" type="text/css" href="../../assets/widgets/timepicker/timepicker.css">-->
+        <script src="~/assets/widgets/timepicker/timepicker.js"></script>
+        
+        @*<script type="text/javascript">
+
+            /* Timepicker */
+
+            $(function () {
+                "use strict";
+                $('.timepicker-example').timepicker();
+            });
+        </script>*@
+
+        <!-- Colorpicker -->
+        <!--<link rel="stylesheet" type="text/css" href="../../assets/widgets/colorpicker/colorpicker.css">-->
+        @*<script src="~/assets/widgets/colorpicker/colorpicker.js"></script>
+
+        <script src="~/assets/widgets/colorpicker/colorpicker-demo.js"></script>*@
+    
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel">
+                    <div class="panel-body">
+                        <h3 class="title-hero">
+                            Bootstrap Date Range Picker
+                        </h3>
+                        <div class="example-box-wrapper">
+                            <form class="form-horizontal bordered-row" role="form">
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Basic</label>
+                                    <div class="col-sm-8">
+                                        <div class="input-prepend input-group">
+                                            <span class="add-on input-group-addon">
+                                                <i class="glyph-icon icon-calendar"></i>
+                                            </span>
+                                            <input type="text" name="daterangepicker-example" id="daterangepicker-example" class="form-control" value="03/18/2013 - 03/23/2013">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Dropdown</label>
+                                    <div class="col-sm-8">
+                                        <div id="daterangepicker-custom" class="btn btn-primary" title="" data-toggle="dropdown">
+                                            <i class="glyph-icon icon-calendar"></i>
+                                            <span>July 27, 2017 - August 25, 2017</span>
+                                            <b class="caret"></b>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Date &amp; Time picker</label>
+                                    <div class="col-sm-8">
+                                        <div class="input-prepend input-group">
+                                            <span class="add-on input-group-addon">
+                                                <i class="glyph-icon icon-calendar"></i>
+                                            </span>
+                                            <input type="text" name="daterangepicker-time" id="daterangepicker-time" class="form-control" value="03/18/2013 - 03/23/2013">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="panel-body">
+                        <h3 class="title-hero">
+                            Bootstrap Datepicker
+                        </h3>
+                        <div class="example-box-wrapper">
+                            <form class="form-horizontal bordered-row" role="form">
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Basic</label>
+                                    <div class="col-sm-8">
+                                        <div class="input-prepend input-group">
+                                            <span class="add-on input-group-addon">
+                                                <i class="glyph-icon icon-calendar"></i>
+                                            </span>
+                                            <input type="text" class="bootstrap-datepicker form-control" value="25-08-17" data-date-format="mm/dd/yy">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="panel-body">
+                        <h3 class="title-hero">
+                            Bootstrap Timepicker
+                        </h3>
+                        <div class="example-box-wrapper">
+                            <form class="form-horizontal bordered-row" role="form">
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Basic</label>
+                                    <div class="col-sm-8">
+                                        <div class="bootstrap-timepicker dropdown">
+                                            <input class="timepicker-example form-control" type="text">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="panel">
+                    <div class="panel-body">
+                        <h3 class="title-hero">
+                            jQuery UI Datepicker
+                        </h3>
+                        <div class="example-box-wrapper">
+                            <form class="form-horizontal bordered-row" role="form">
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Inline</label>
+                                    <div class="col-sm-8">
+                                        <div class="datepicker ui-datepicker-inline hasDatepicker" style="width: 100%; max-width: 350px;" id="dp1503603473343"><div class="ui-datepicker-inline ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" style="display: block;"><div class="ui-datepicker-header ui-widget-header ui-helper-clearfix ui-corner-all"><a class="ui-datepicker-prev ui-corner-all" data-handler="prev" data-event="click" title="Prev"><span class="ui-icon ui-icon-circle-triangle-w">Prev</span></a><a class="ui-datepicker-next ui-corner-all" data-handler="next" data-event="click" title="Next"><span class="ui-icon ui-icon-circle-triangle-e">Next</span></a><div class="ui-datepicker-title"><span class="ui-datepicker-month">August</span>&nbsp;<span class="ui-datepicker-year">2017</span></div></div><table class="ui-datepicker-calendar"><thead><tr><th scope="col" class="ui-datepicker-week-end"><span title="Sunday">Su</span></th><th scope="col"><span title="Monday">Mo</span></th><th scope="col"><span title="Tuesday">Tu</span></th><th scope="col"><span title="Wednesday">We</span></th><th scope="col"><span title="Thursday">Th</span></th><th scope="col"><span title="Friday">Fr</span></th><th scope="col" class="ui-datepicker-week-end"><span title="Saturday">Sa</span></th></tr></thead><tbody><tr><td class=" ui-datepicker-week-end ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td><td class=" ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td><td class=" " data-handler="selectDay" data-event="click" data-month="7" data-year="2017"><a class="ui-state-default" href="#">1</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="7" data-year="2017"><a class="ui-state-default" href="#">2</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="7" data-year="2017"><a class="ui-state-default" href="#">3</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="7" data-year="2017"><a class="ui-state-default" href="#">4</a></td><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="7" data-year="2017"><a class="ui-state-default" href="#">5</a></td></tr><tr><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="7" data-year="2017"><a class="ui-state-default" href="#">6</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="7" data-year="2017"><a class="ui-state-default" href="#">7</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="7" data-year="2017"><a class="ui-state-default" href="#">8</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="7" data-year="2017"><a class="ui-state-default" href="#">9</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="7" data-year="2017"><a class="ui-state-default" href="#">10</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="7" data-year="2017"><a class="ui-state-default" href="#">11</a></td><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="7" data-year="2017"><a class="ui-state-default" href="#">12</a></td></tr><tr><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="7" data-year="2017"><a class="ui-state-default" href="#">13</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="7" data-year="2017"><a class="ui-state-default" href="#">14</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="7" data-year="2017"><a class="ui-state-default" href="#">15</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="7" data-year="2017"><a class="ui-state-default" href="#">16</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="7" data-year="2017"><a class="ui-state-default" href="#">17</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="7" data-year="2017"><a class="ui-state-default" href="#">18</a></td><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="7" data-year="2017"><a class="ui-state-default" href="#">19</a></td></tr><tr><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="7" data-year="2017"><a class="ui-state-default" href="#">20</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="7" data-year="2017"><a class="ui-state-default" href="#">21</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="7" data-year="2017"><a class="ui-state-default" href="#">22</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="7" data-year="2017"><a class="ui-state-default" href="#">23</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="7" data-year="2017"><a class="ui-state-default" href="#">24</a></td><td class=" ui-datepicker-days-cell-over  ui-datepicker-current-day ui-datepicker-today" data-handler="selectDay" data-event="click" data-month="7" data-year="2017"><a class="ui-state-default ui-state-highlight ui-state-active ui-state-hover" href="#">25</a></td><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="7" data-year="2017"><a class="ui-state-default" href="#">26</a></td></tr><tr><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="7" data-year="2017"><a class="ui-state-default" href="#">27</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="7" data-year="2017"><a class="ui-state-default" href="#">28</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="7" data-year="2017"><a class="ui-state-default" href="#">29</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="7" data-year="2017"><a class="ui-state-default" href="#">30</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="7" data-year="2017"><a class="ui-state-default" href="#">31</a></td><td class=" ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td><td class=" ui-datepicker-week-end ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td></tr></tbody></table></div></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Multiple months</label>
+                                    <div class="col-sm-8">
+                                        <div class="input-prepend input-group">
+                                            <span class="add-on input-group-addon">
+                                                <i class="glyph-icon icon-calendar"></i>
+                                            </span>
+                                            <input type="text" name="datepicker_multiple_months" id="datepicker_multiple_months" class="form-control hasDatepicker">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Range selector</label>
+                                    <div class="col-sm-8">
+                                        <div class="clearfix row">
+                                            <div class="col-sm-6">
+                                                <input type="text" name="" id="fromDate" placeholder="From date..." class="float-left mrg10R form-control hasDatepicker">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <input type="text" name="" id="toDate" placeholder="To date..." class="float-left form-control hasDatepicker">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="panel-body">
+                        <h3 class="title-hero">
+                            Colorpicker
+                        </h3>
+                        <div class="example-box-wrapper">
+                            <form class="form-horizontal bordered-row" role="form">
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Inline</label>
+                                    <div class="col-sm-8">
+                                        <div class="minicolors minicolors-theme-default minicolors-with-opacity minicolors-position-bottom minicolors-position-right minicolors-inline"><div id="colorpicker-inline" class="minicolors-input" data-opacity="1"></div><div class="minicolors-panel minicolors-slider-hue"><div class="minicolors-slider"><div class="minicolors-picker" style="top: 0px;"></div></div><div class="minicolors-opacity-slider"><div class="minicolors-picker" style="top: 0px;"></div></div><div class="minicolors-grid" style="background-color: rgb(255, 0, 0);"><div class="minicolors-grid-inner"></div><div class="minicolors-picker" style="top: 150px; left: 0px;"><div></div></div></div></div></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">Positions</label>
+                                    <div class="col-sm-8">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="minicolors minicolors-theme-default minicolors-position-bottom minicolors-position-right"><input type="text" name="colorpicker-inline" id="colorpicker-br" class="form-control minicolors-input" size="7"><span class="minicolors-swatch"><span class="minicolors-swatch-color"></span></span><div class="minicolors-panel minicolors-slider-hue"><div class="minicolors-slider"><div class="minicolors-picker" style="top: 0px;"></div></div><div class="minicolors-opacity-slider"><div class="minicolors-picker"></div></div><div class="minicolors-grid" style="background-color: rgb(255, 0, 0);"><div class="minicolors-grid-inner"></div><div class="minicolors-picker" style="top: 150px; left: 0px;"><div></div></div></div></div></div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="minicolors minicolors-theme-default minicolors-position-top minicolors-position-left"><input type="text" name="colorpicker-inline" id="colorpicker-tl" class="form-control minicolors-input" size="7"><span class="minicolors-swatch"><span class="minicolors-swatch-color"></span></span><div class="minicolors-panel minicolors-slider-wheel"><div class="minicolors-slider" style="background-color: rgb(255, 255, 255);"><div class="minicolors-picker" style="top: 0px;"></div></div><div class="minicolors-opacity-slider"><div class="minicolors-picker"></div></div><div class="minicolors-grid"><div class="minicolors-grid-inner"></div><div class="minicolors-picker" style="top: 75px; left: 75px;"><div></div></div></div></div></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+

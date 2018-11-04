@@ -1,0 +1,185 @@
+﻿@model BookStore.Models.Inventory.Invoice
+@{
+
+    TempData["Option"] = ViewBag.Option;
+}
+@*below is for jquery DatePicker*@
+<link href="~/Content/jquery-ui.css" rel="stylesheet" />
+@*<script src="~/Scripts/jquery-1.12.4.js"></script> this is in Layout page so omitted here*@
+<script src="~/Scripts/jquery-ui.js"></script>
+
+<div id="page-title">
+    <h2>@ViewBag.Option Form</h2>
+</div>
+
+<div class="panel">
+    <div class="panel-body">
+        <h3 class="title-hero">
+    
+            @Html.Raw(ViewBag.message)
+        </h3>
+        <div class="example-box-wrapper">
+            @using (Html.BeginForm("EditSalary", "InvTransaction", FormMethod.Post, new { @class = "form-horizontal bordered-row", id = "demo-form", data_parsley_validate = "", novalidate = "" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.ValidationSummary(true)
+                    </div>
+                    @Html.HiddenFor(model => model.Id)
+                    @Html.HiddenFor(model => model.CreatedDate)
+                    @Html.HiddenFor(model => model.CreatedBy)
+                    @Html.HiddenFor(model => model.InvoiceDate)
+
+
+                </div>
+
+                <div class="row hidden">
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label"><span class="red">*</span>Invoice Type</label>
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(model => model.InvoiceType, new { placeholder = "Invoice Type",Value = @ViewBag.Option, @class = "form-control disabled no-border" })
+
+                            <ul class="parsley-errors-list" id="parsley-id-4059"></ul>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label"><span class="red">*</span>Select Employee</label>
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(model => model.CustomerName, new { placeholder = "Customer Name", required = "required", @class = "form-control disabled no-border" })
+
+                            @*@Html.DropDownList("Customer_Id", (IEnumerable<SelectListItem>)ViewBag.EmployeeList, "--Select Employee--", new { onchange = "GetEmployeeSalary(this.id)", id = "Customer_Id", required = "required", @class = "form-control disabled pull-left txt-hight-35" })*@
+                          
+                              <ul class="parsley-errors-list" id="parsley-id-4059"></ul>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label"><span class="red">*</span>Salary Date</label>
+                        <div class="col-sm-4">
+                            <div class="input-prepend input-group">
+                                <span class="add-on input-group-addon">
+                                    <i class="glyph-icon icon-calendar"></i>
+                                </span>
+                                <span>
+                                    @Html.TextBoxFor(model => model.InvoiceDate,"{0:d-MMM-yy}", new { id = "ToDate", @class = "datepicker form-control", type = "text", required = "required", data_parsley_id = "4059" })
+                                </span>
+                                <ul class="parsley-errors-list" id="parsley-id-4059"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label"><span class="red">*</span>Total Salary</label>
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(model => model.Total, new { @class = "form-control decimal disabled", required = "required" })
+                            <ul class="parsley-errors-list" id="parsley-id-4059"></ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Bonus or Extra </label>
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(model => model.BonusOrExtra, new { @class = "form-control decimal" })
+                            <ul class="parsley-errors-list" id="parsley-id-4059"></ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Mobile Bill</label>
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(model => model.MobileBill, new { @class = "form-control decimal" })
+                            <ul class="parsley-errors-list" id="parsley-id-4059"></ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Transport Bill</label>
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(model => model.TransportBill, new { @class = "form-control decimal" })
+                            <ul class="parsley-errors-list" id="parsley-id-4059"></ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Deduction</label>
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(model => model.Discount, new { @class = "form-control decimal" })
+                            <ul class="parsley-errors-list" id="parsley-id-4059"></ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label"><span class="red">*</span>Amount Payable</label>
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(model => model.Payable, new { @class = "form-control decimal disabled", required = "required" })
+                            <ul class="parsley-errors-list" id="parsley-id-4059"></ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row hidden">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label"><span class="red">*</span>Paid</label>
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(model => model.Paid, new { @class ="form-control decimal",@Value=0})
+                            <ul class="parsley-errors-list" id="parsley-id-4059"></ul>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row bg-default content-box">
+
+                    <label class="col-sm-3 control-label">
+                        <span class="pull-left">
+                            <a class="btn btn-link font-blue" href="/InvTransaction/SalaryList">
+                                <i class="glyph-icon icon-angle-double-left" title="" data-original-title=".icon-angle-double-left" aria-describedby="tooltip602646">
+                                    Back to List
+                                </i>
+                            </a>
+                        </span>
+                    </label>
+                    <div class="col-sm-4">
+                        <button class="btn btn-lg btn-primary btn-hover" id="btnSubmit">
+                            <span>Save Transaction</span>
+                            <i class="glyph-icon icon-check" title="" data-original-title=".icon-check" aria-describedby="tooltip941007"></i>
+                        </button>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $(".datepicker").datepicker({ dateFormat: "dd-M-yy", maxDate: '0' }).val();
+    });
+</script>
+
+<script src="~/Scripts/Transaction.js"></script>
+<script src="~/Scripts/input_validation.js"></script>
+

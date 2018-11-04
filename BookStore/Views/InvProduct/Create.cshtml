@@ -1,0 +1,225 @@
+﻿@model BookStore.Models.Inventory.Product
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+@if (ViewBag.message == "success")
+{
+    <div class="alert alert-close alert-success">
+        <a href="#" title="Close" class="glyph-icon alert-close-btn icon-remove"></a>
+        <div class="bg-green alert-icon">
+            <i class="glyph-icon icon-check"></i>
+        </div>
+        <div class="alert-content">
+            <h4 class="alert-title">Success Message Alert</h4>
+
+            @if (ViewBag.message == "success")
+            {
+                <p>Data Save Successfull! </p>
+            }
+            <p>@Html.Raw(ViewBag.message)</p>
+
+
+        </div>
+    </div>
+
+}
+else if (ViewBag.message == "")
+{
+    <div class="alert alert-close alert-success">
+        <a href="#" title="Close" class="glyph-icon alert-close-btn icon-remove"></a>
+
+        <div class="alert-content">
+            <h4 class="alert-title">Wellcome Product Create Form</h4>
+        </div>
+    </div>
+}
+else
+{
+    <div class="alert alert-danger">
+        <a href="#" title="Close" class="glyph-icon alert-close-btn icon-remove"></a>
+
+        <div class="alert-content">
+            <h4 class="alert-title">Unsuccessful Alert</h4>
+            <p>@Html.Raw(ViewBag.message)</p>
+        </div>
+    </div>
+
+}
+
+
+
+
+<div class="panel">
+        <div class="panel-body">
+          
+            <div class="example-box-wrapper">
+                @using (Html.BeginForm("Create", "InvProduct", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal bordered-row", id = "demo-form", data_parsley_validate = "", novalidate = "" }))
+               {
+
+                    @Html.AntiForgeryToken()
+                    <div class="row">
+                        <div class="col-md-6">
+                            @Html.ValidationSummary(true)
+                        </div>
+                    </div>
+
+                    <div class="row">
+                     <div class="col-md-8">
+
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label"><span class="red">*</span>Product Name</label>
+                                <div class="col-sm-6">
+                                    @Html.TextBoxFor(model => model.Name, new { placeholder = "Product Name", data_parsley_maxlength = "50", required = "", @class = "form-control", data_parsley_id = "4059" })
+
+                                    <ul class="parsley-errors-list" id="parsley-id-4059"></ul>
+                                </div>
+                            </div>
+                        </div>
+
+                         <div class="row">
+                             <div class="form-group">
+                                 <label class="col-sm-3 control-label">Product Code</label>
+                                 <div class="col-sm-6">
+                                     @Html.TextBoxFor(model => model.BarCode, new { placeholder = "Product Code", data_parsley_maxlength = "50", @class = "form-control", data_parsley_id = "4059" })
+
+                                     <ul class="parsley-errors-list" id="parsley-id-4059"></ul>
+                                 </div>
+                             </div>
+                         </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label"><span class="red">*</span>Purchase Cost</label>
+                                <div class="col-sm-6">
+                                    @Html.TextBoxFor(model => model.CostPrice, new { placeholder = "Product Purchase Cost", required = "", @class = "form-control decimal" })
+                                    <ul class="parsley-errors-list">
+                                        @Html.ValidationMessageFor(model => model.CostPrice)
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label"><span class="red">*</span>Sale Price</label>
+                                <div class="col-sm-6">
+                                    @Html.TextBoxFor(model => model.SalePrice, new { placeholder = "Product Sale Cost", required = "", @class = "form-control decimal" })
+                                    <ul class="parsley-errors-list" id="parsley-id-7514">
+                                        @Html.ValidationMessageFor(model => model.SalePrice)
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                         <div class="row">
+                             <div class="form-group">
+                                 <label class="col-sm-3 control-label"><span class="red">*</span>Noted Purchase Cost</label>
+                                 <div class="col-sm-6">
+                                     @Html.TextBoxFor(model => model.DisplayCostPrice, new { placeholder = "Product Purchase Cost", required = "", @class = "form-control decimal" })
+                                     <ul class="parsley-errors-list">
+                                         @Html.ValidationMessageFor(model => model.DisplayCostPrice)
+                                     </ul>
+                                 </div>
+                             </div>
+                         </div>
+
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label"><span class="red">*</span>Main Catagory</label>
+                                <div class="col-sm-6">
+                                    @Html.DropDownList("MainCatagory", (IEnumerable<SelectListItem>)ViewBag.MainCatagory, "Select Catagory", new { @class = "form-control", required = "" })
+                                    <ul class="parsley-errors-list" id="parsley-id-4059"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label"><span class="red">*</span>Sub Catagory</label>
+                                <div class="col-sm-6">
+                                    @Html.DropDownList("Catagory_Id", new SelectList(string.Empty, "Value", "Text"), "--Select SubCatagory--", new { @class = "form-control", required = "" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Brand</label>
+                                <div class="col-sm-6">
+                                    @Html.DropDownList("Brand_Id", new SelectList(string.Empty, "Value", "Text"), "--Select Brand--", new { @class = "form-control"})
+                                    <ul class="parsley-errors-list" id="parsley-id-7330"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Description</label>
+                                <div class="col-sm-6">
+                                    @Html.TextAreaFor(model => model.Description, new { data_parsley_maxlength = "300", placeholder = "At most 300 characters", @class = "form-control", data_parsley_id = "7330" })
+                                    <ul class="parsley-errors-list" id="parsley-id-7330"></ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                     <div class="col-md-4">
+                         <div class="form-group">
+                             <div class="col-md-4">
+                                 <div class="img-bordered img-box-size">
+                                     
+                                     <img id="blah" src="" class="img-full" />
+                                 </div>                          
+                             </div>                           
+                            
+                         </div>
+
+                         <div class="form-group">
+                             <div class="col-md-4">
+                                 <input type="file" id="file" name="file" onchange="readURL(this);" />
+                              </div>
+                         </div>
+                     </div>
+                    </div>
+                    
+                    <div class="row bg-default content-box">
+                        <label class="col-sm-3 control-label">
+                            <span class="pull-left">
+                                <a class="btn btn-link font-blue" href="/InvProduct/Index">
+                                    <i class="glyph-icon icon-angle-double-left" title="" data-original-title=".icon-angle-double-left" aria-describedby="tooltip602646">
+                                        Back to List
+                                    </i>
+                                </a>
+                            </span>
+                        </label>
+                        <div class="col-sm-4">
+                            <button class="btn btn-lg btn-primary btn-hover" id="btnSubmit">
+                                <span>Save Product</span>
+                                <i class="glyph-icon icon-check" title="" data-original-title=".icon-check" aria-describedby="tooltip941007"></i>
+                            </button>
+                        </div>
+                    </div>
+                 
+                }
+            </div>
+
+            </div>
+        </div>
+
+
+
+<script src="~/Scripts/ProductEdit.js"></script>
+
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+
+                $("#blah").attr('src', e.target.result).removeClass("img-full hide").addClass("img-full");
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>

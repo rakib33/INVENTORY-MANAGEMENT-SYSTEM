@@ -1,0 +1,248 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+@*below is for jquery DatePicker*@
+<link href="~/Content/jquery-ui.css" rel="stylesheet" />
+@*<script src="~/Scripts/jquery-1.12.4.js"></script> this is in Layout page so omitted here*@
+<script src="~/Scripts/jquery-ui.js"></script>
+
+
+<div class="panel">
+    <div class="panel-body">
+        <div class="example-box-wrapper">
+            <div class="row">
+                <h3 class="title-hero">
+                    @Html.Raw(ViewBag.message)
+                </h3>
+            </div>
+
+            <div class="panel-info col-sm-12">
+                <div class="panel-heading txt-hight-35">
+                    Purchase Product Search Option
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <label class="col-sm-2 control-label pull-left"><span class="red">*</span>Invoice Date(From)</label>
+                        <div class="col-sm-4">
+                            <div class="input-prepend input-group">
+                                <span class="add-on input-group-addon">
+                                    <i class="glyph-icon icon-calendar"></i>
+                                </span>
+                                <span>
+                                    @Html.TextBox("FromDate", "", new { id = "FromDate", @class = "form-control pull-left txt-hight-30 datepicker" })
+                                </span>
+                                <ul class="parsley-errors-list" id="parsley-id-4059"></ul>
+                            </div>
+                        </div>
+
+                        <label class="col-sm-2 control-label pull-left"><span class="red">*</span>Invoice Date(To)</label>
+                        <div class="col-sm-4">
+                            <div class="input-prepend input-group">
+                                <span class="add-on input-group-addon">
+                                    <i class="glyph-icon icon-calendar"></i>
+                                </span>
+                                <span>
+                                    @Html.TextBox("ToDate", "", new { id = "ToDate", @class = "form-control pull-left txt-hight-30 datepicker" })
+                                </span>
+                                <ul class="parsley-errors-list" id="parsley-id-4059"></ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row margin-top-05">
+                        <label class="col-sm-2 pull-left text-center">Invoice/Chalan No</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control pull-left txt-hight-30" name="InvoiceNo" id="InvoiceNo" />
+                        </div>
+                        <label class="col-sm-2 pull-left text-center">Supplier</label>
+                        <div class="col-sm-4">
+                            @Html.DropDownList("SuplierId", (IEnumerable<SelectListItem>)ViewBag.Supplier, "--select supplier--", new { id = "SuplierId", @class = "form-control pull-left txt-hight-35" })
+                        </div>
+                    </div>
+                    <div class="row margin-top-05">
+                        <label class="col-sm-2 pull-left text-center">Supplier Phone</label>
+                        <div class="col-sm-4">
+                            @Html.TextBox("phone", "", new { id = "phone", @class = "form-control pull-left txt-hight-30" })                           
+                        </div>                        
+                    </div>
+
+
+                    <div class="row margin-top-05">
+                        <label class="col-sm-2 pull-left text-center"></label>
+                        <div class="col-sm-4">
+                            <a class="btn btn-sm btn-success margin-top-05 btn-hover" onclick="GetPurchaseInvoiceInfo()">
+                                <span>Apply</span>
+                                <i class="glyph-icon icon-check" title="" data-original-title=".icon-plus" aria-describedby="tooltip941007">
+                                </i>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            @if (ViewBag.Option == null && string.IsNullOrEmpty(ViewBag.Option))
+            {
+                <div class="row margin-top-05">
+                    <div class="col-md-6">
+                        <a class="btn btn-sm btn-primary margin-top-05 btn-hover" href="/InvPurchase/Create">
+                            <span> Purchase Product</span>
+                            <i class="glyph-icon icon-plus" title="" data-original-title=".icon-plus" aria-describedby="tooltip941007">
+
+                            </i>
+                        </a>
+                    </div>
+                </div>
+            }
+
+            <div id="datatable-responsive_wrapper" class="dataTables_wrapper form-inline margin-top-05">
+                <table id="exampleSale" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                    <thead>
+                        <tr role="row">
+                            <th style="width:5px" class="all">Sl No</th>
+                            <th class="all">Invoice No</th>
+                            <th>Invoice Date</th>
+                            <th>Supplier</th>
+                            <th>Phone</th>
+                            <th class="all">Sub Total</th>
+                            <th class="none">Discount</th>
+                            <th class="all">Total</th>
+                            <th class="all">Paid</th>
+                            <th class="all">Due</th>
+                            <th class="all">Status</th>
+
+                            <th class="all">Link</th> @*class "all": Always display column irrespective of the screen size.*@
+                            <th class="none">Sold By</th>  @*class "none": Don't display as a column, but show in the child row.*@
+                            <th class="none">Sold Date</th>
+
+                        </tr>
+                    </thead>
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    $(function () {
+        //$(".datepicker").datepicker({ dateFormat: "dd-M-yy" }).val();
+        $(".datepicker").datepicker({ dateFormat: "dd-M-yy", maxDate: '0' }).val();
+        GetPurchaseInvoiceInfo();
+    });
+
+    function GetPurchaseInvoiceInfo() {
+        try {
+
+
+            var _invoice = $('#InvoiceNo').val();
+            var sId = document.getElementById("SuplierId").valueOf();
+            sId = sId.options[sId.selectedIndex].value;
+
+            var _phone = $('#phone').val();
+
+            var _fromDate = $('#FromDate').datepicker('getDate');
+            _fromDate = $.datepicker.formatDate('dd-mm-yy', _fromDate);
+            var _toDate = $('#ToDate').datepicker('getDate');
+            _toDate = $.datepicker.formatDate('dd-mm-yy', _toDate);
+
+            alert('Invoice=' + _invoice + ' SuplierId=' + sId + ' ' + ' from date= ' + _fromDate + ' ' + 'to date= ' + _toDate);
+
+            var _url = "/InvPurchase/LoadData?InvoiceNo=" + _invoice +"&phone="+ _phone + "&SuplierId=" + sId + "&FromDate=" + _fromDate + "&ToDate=" + _toDate + "&Option=PurchaseInvoice";
+
+
+            var t = $('#exampleSale').DataTable({
+                //for row index
+                "columnDefs": [{
+                    "targets": [0]
+                },
+                ],
+
+                //for only 2nd column order.ommit this so any column now searcable
+                "order": [[1, 'asc']],
+                "destroy": true, //must to destroy after load to avoid 'cannot reinitialise datatable' problem
+                "processing": true, // for show progress bar
+                "serverSide": true, // for process server side
+                "filter": false, // this is for disable filter (search box)
+                "orderMulti": false, // for disable multiple column at once
+                //"lengthChange": false, //stop filter by 10,15,20,50 row on per page
+
+
+                "ajax": {
+                    "url": _url,
+                    "type": "POST",
+                    "datatype": "json"
+                },
+
+
+                "columns": [
+                       {
+                           "data": null, "name": "Sl No", "display": "none",
+                           render: function (data, type, row, meta) {
+                               return meta.row + meta.settings._iDisplayStart + 1;
+                           }
+                       },   // it is Sr No and data=null I set to prevent display error alert datatables requested unknown parameter '0' for row 0 column 0, also should Display:none
+                        { "data": "InvoiceNo", "name": "Invoice No", "autoWidth": true },
+                        {
+                            "data": "InvoiceDate", "name": "Invoice Date", "autoWidth": true,
+                            "render": function (d) {
+                                return moment(d).format("DD-MMM-YYYY");  //Do MMM YYYY =>11th Sep 02017
+                            }
+                        },
+                        { "data": "CustomerName", "name": "Customer", "autoWidth": true },
+                        { "data": "Phone", "name": "Phone", "autoWidth": true },
+
+                        { "data": "Total", "name": "Sub Total", "autoWidth": true },
+
+                        { "data": "Discount", "name": "Discount", "autoWidth": true },
+
+                        { "data": "Payable", "name": "Total", "autoWidth": true },
+                        { "data": "Paid", "name": "Paid", "autoWidth": true },
+                        {
+                            "data": "Due", "name": "Due", "autoWidth": true,
+                            "render": function (data, type, row, meta) {
+                                if (data > 0) {
+                                    data = '<span class="font-red font-size-18 font-bold">' + data + '</span>'
+                                }
+                                return data;
+                            }
+                        },
+                        { "data": "Status", "name": "Status", "autoWidth": true },
+                        {
+                            "data": "Id", "name": "Link", "display": "none",
+                            "render": function (data, type, row, meta) {
+                                if (type === 'display') {
+
+                                    data = '<form action="/InvInvoice/PurchaseInvoice"  method="get"><input type="text" value="' + data + '" name="invoiceId" id="invoiceId" class="hide">' +
+                                           '<button type="submit" class="btn btn-sm btn-default font-green"><i class="glyph-icon icon-print"></i></button></form>'
+                                    //+'<a href="/InvPurchase/Purchase?id=' + data + '" class="btn btn-sm btn-default font-green"><i class="glyph-icon icon-ellipsis-v" title="" data-original-title=".icon-ellipsis-v"></i></a>';
+
+                                }
+                                return data;
+                            }
+                        },
+
+                        { "data": "CreatedBy", "name": "Sold By", "autoWidth": true },
+                        {
+                            "data": "CreatedDate", "name": "Sold Date", "autoWidth": true,
+                            "render": function (d) {
+                                return moment(d).format("DD-MMM-YYYY");  //Do MMM YYYY =>11th Sep 02017
+                            }
+                        },
+                ]
+            });
+
+        }
+        catch (err) {
+
+        }
+    }
+
+
+
+</script>

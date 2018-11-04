@@ -1,0 +1,85 @@
+﻿@model IEnumerable<BookStore.Models.Inventory.ProductWiseViewModel>
+
+
+
+<div id="index">
+
+    <!-- Sparklines charts -->
+
+    <script type="text/javascript" src="~/assets/widgets/charts/sparklines/sparklines.js"></script>
+    <script type="text/javascript" src="~/assets/widgets/charts/sparklines/sparklines-demo.js"></script>
+
+    <!-- Flot charts -->
+
+    <script type="text/javascript" src="~/assets/widgets/charts/flot/flot.js"></script>
+    <script type="text/javascript" src="~/assets/widgets/charts/flot/flot-resize.js"></script>
+    <script type="text/javascript" src="~/assets/widgets/charts/flot/flot-stack.js"></script>
+    <script type="text/javascript" src="~/assets/widgets/charts/flot/flot-pie.js"></script>
+    <script type="text/javascript" src="~/assets/widgets/charts/flot/flot-tooltip.js"></script>
+    <script type="text/javascript" src="~/assets/widgets/charts/flot/flot-demo-1.js"></script>
+
+    <!-- PieGage charts -->
+
+    <script type="text/javascript" src="~/assets/widgets/charts/piegage/piegage.js"></script>
+    <script type="text/javascript" src="~/assets/widgets/charts/piegage/piegage-demo.js"></script>
+
+    <div id="page-title">        
+        @Html.Partial("adminOption")
+    </div>
+
+  
+    @Html.Partial("ProductGainLoss", Model) 
+    
+    @Html.Partial("dashboard")
+</div>
+
+@*@section JavaScript{*@
+    <script src="~/Scripts/jquery.signalR-2.3.0.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script>
+        $(function () {
+            // Reference the hub.
+            var hubNotif = $.connection.customerHub;
+
+            // Start the connection.
+            $.connection.hub.start().done(function () {
+                getAll();
+            });
+
+            //// Notify while anyChanges.
+            hubNotif.client.updatedData = function () {
+                getAll();
+            };
+
+            alert('Calling Get All');
+            getAll();
+        });
+
+        function getAll() {
+            alert('hited');
+
+            var model = $('#dtGainLoss');
+            try {
+                $.ajax({
+                    type: 'GET',
+                    url: '/Home/GetAllData',
+                    dataType: 'html',
+                    contentType: 'application/html ; charset:utf-8',
+                    // data: { id: $("#MainCatagory").val() },
+
+                    success: function (result) {
+                        console.log('ajax call success');
+                        model.empty().append(result);
+                    },
+                    error: function (ex) {
+                        alert('Failed to retrieve data.' + ex);
+                    }
+                });
+
+              } catch (err) {
+                console('this is catch error');
+                alert(err.message)
+            }
+        }
+    </script>
+@*}*@

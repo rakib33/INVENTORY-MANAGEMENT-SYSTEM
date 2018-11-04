@@ -1,0 +1,151 @@
+﻿@model BookStore.Models.Inventory.Purchase
+
+@*below is for jquery DatePicker*@
+<link href="~/Content/jquery-ui.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-ui.js"></script>
+
+<div id="productId">
+    <div id="page-title">
+        <h2>Purchase Edit Forms</h2>
+        <h6> You can edit your Pending Purchase product.</h6>
+       
+    </div>
+
+    <div class="panel">
+        <div class="panel-body">
+            <div class="example-box-wrapper">
+                <h3 class="title-hero">
+                    @Html.Raw(ViewBag.message)
+                </h3>
+                @using (Html.BeginForm("Edit", "InvPurchase", FormMethod.Post, new { @class = "form-horizontal bordered-row", id = "demo-form", data_parsley_validate = "", novalidate = "" }))
+                {
+                    @Html.AntiForgeryToken()                  
+                       <div class="row">
+                           <div class="col-md-6 font-red">
+                               @Html.ValidationSummary(true)
+                           </div>
+                           @Html.HiddenFor(model => model.Id)
+                       </div>                      
+
+                        <div class="row">
+                            <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"><span class="red">*</span>Invoice No</label>                            
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(model => model.InvoiceNo, new { @class = "form-control", required = "", @readonly = "readonly" })
+                                <ul class="parsley-errors-list" id="parsley-id-4059">
+                                    @Html.ValidationMessageFor(model => model.InvoiceNo)
+                                </ul>
+                            </div>
+                        </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label"><span class="red">*</span>Supplier</label>
+                                    <div class="col-md-6">
+                                        @Html.TextBoxFor(model => model.ApplicationUser.Name, new { @class = "form-control", required = "", @readonly = "readonly" })
+                                        <ul class="parsley-errors-list" id="parsley-id-4059">
+                                            @Html.ValidationMessageFor(model => model.ApplicationUser.Name)
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label"><span class="red">*</span>Sub Catagory</label>
+                                    <div class="col-md-6">
+                                        @Html.DropDownList("Invoice_Id", (IEnumerable<SelectListItem>)ViewBag.SubCatagory, "Select Sub Catagory", new { @class = "form-control", required = "" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label"><span class="red">*</span>Product</label>
+                                    <div class="col-md-6">
+                                        @Html.DropDownList("Product_Id", (IEnumerable<SelectListItem>)ViewBag.Product, "Select Product", new { @class = "form-control", required = "" })
+                                        @Html.ValidationMessageFor(model => model.Product_Id)
+                                    </div>
+                                </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"><span class="red">*</span>Quantity</label>
+                        
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(model => model.Qty, new { @class = "form-control", required = "", @readonly = "readonly" })
+                                <ul class="parsley-errors-list" id="parsley-id-4059">
+                                    @Html.ValidationMessageFor(model => model.Qty)
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"><span class="red">*</span>Buy Rate</label>                        
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(model => model.BuyRate, new { @class = "form-control", required = "", @readonly = "readonly" })
+                                <ul class="parsley-errors-list" id="parsley-id-4059">
+                                    @Html.ValidationMessageFor(model => model.BuyRate)
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"><span class="red">*</span>Buy Total</label>                         
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(model => model.BuyTotal, new { @class = "form-control", required = "", @readonly = "readonly" })
+                                <ul class="parsley-errors-list" id="parsley-id-4059">
+                                    @Html.ValidationMessageFor(model => model.BuyTotal)
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"><span class="red">*</span>Sale Rate</label>
+                          
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(model => model.SaleRate, new { @class = "form-control", required = "", @readonly = "readonly" })
+                                <ul class="parsley-errors-list" id="parsley-id-4059">
+                                    @Html.ValidationMessageFor(model => model.SaleRate)
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"><span class="red">*</span>Sale Total</label>                        
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(model => model.SaleTotal, new { @class = "form-control", required = "", @readonly = "readonly" })
+                                <ul class="parsley-errors-list" id="parsley-id-4059">
+                                    @Html.ValidationMessageFor(model => model.SaleTotal)
+                                </ul>
+                            </div>
+                        </div>
+
+                 
+                        <div class="form-group">
+                           <label class="col-sm-3 control-label"><span class="red">*</span>Status</label>
+                            <div class="col-md-6">
+                             @Html.DropDownListFor(model => model.Status, (IEnumerable<SelectListItem>)ViewBag.Status, "--select status--", new { @class = "form-control", required = "", @readonly = "" })
+                              @Html.ValidationMessageFor(model => model.Status)
+                            </div>
+                          </div>
+                        </div>
+                         </div>
+                    
+                    <div class="content-box pad20A mrg25T">
+
+                        <span>
+                            <a class="btn btn-link font-blue" href="/InvPurchase/Index">
+                                <i class="glyph-icon icon-angle-double-left" title="" data-original-title=".icon-angle-double-left" aria-describedby="tooltip602646">
+                                    Back to List
+                                </i>
+                            </a>
+                        </span>
+
+                        @if (ViewBag.Option != "Approved")
+                        {
+                            <button class="btn btn-lg btn-primary btn-hover text-center ">
+                                <span>Edit Purchase Product</span>
+                                <i class="glyph-icon icon-edit"></i>
+                            </button>
+                        }
+                       
+                        </div>
+                }
+
+            </div>
+         </div>
+    </div>
+</div>

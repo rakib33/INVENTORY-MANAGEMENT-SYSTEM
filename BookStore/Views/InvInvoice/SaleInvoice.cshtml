@@ -1,0 +1,234 @@
+﻿@model BookStore.Models.Inventory.Invoice      
+@{
+    var i = 0;
+    var InvDate = Model.InvoiceDate.Value.ToString("dd-MMM-yyyy");
+    TempData["InvoiceId"] = Model.Id;
+}
+<div id="page-title">
+            <h2>Invoice</h2>                 
+        </div>
+      
+        <div id="PrintInvoice" class="content-box pad25A">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="dummy-logo">                       
+                        <img src="~/assets/image-resources/risoft-color.png" style="width:100%;height:100%" />
+                    </div>
+                    <address class="invoice-address">
+                        Loyola University Medical Center
+                        <br>
+                        2160 South 1st Avenue
+                        <br>
+                        Maywood, IL 60153
+                    </address>
+                </div>
+                <div class="col-sm-6 float-right text-right">
+                    <h4 class="invoice-title">Invoice</h4>
+                    No. <b>@Model.InvoiceNo</b>
+                    <div class="divider"></div>
+                    <div class="invoice-date mrg20B">@InvDate</div>
+
+                    <form action="/Report/GetInvoice">
+
+                        @Html.Hidden("InvoiceId", Model.Id)
+                        @Html.Hidden("InvoiceType", Model.InvoiceType)
+
+                        <button class="btn btn-alt btn-hover btn-info">
+                            <span>Print Invoice</span>
+                            <i class="glyph-icon icon-print"></i>
+                        </button>
+
+                    </form>
+                    
+                    @*<button onclick="printInvoice()" class="btn btn-alt btn-hover btn-danger">
+                        <span>Cancel Invoice</span>
+                        <i class="glyph-icon icon-trash"></i>
+                    </button>*@
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <h2 class="invoice-client mrg10T">Client information:</h2>
+                    <h5>@Model.CustomerName</h5>
+                    <address class="invoice-address">
+                        @Model.Address
+                        <br>
+                         @Model.Phone                       
+                    </address>
+                </div>
+
+                <div class="col-md-4">
+                    <h2 class="invoice-client mrg10T">Order Info:</h2>
+                    <ul class="reset-ul">
+                        <li><b>Date:</b>@InvDate</li>
+                        <li><b>Status:</b> <span class="bs-label label-warning">@Model.Status</span></li>
+                        @*<li><b>Id:</b> #474356</li>*@
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h2 class="invoice-client mrg10T">Order Details:</h2>
+                    @*<p>To achieve this, it would be necessary to have uniform grammar, pronunciation and more common words. If several languages coalesce.</p>
+                    <br>
+                    <p>Pronunciation and more common words.</p>*@
+                </div>
+            </div>
+@using (Html.BeginForm("SaleInvoice", "InvInvoice", FormMethod.Post, new { @class = "form-horizontal bordered-row", id = "Sale-form", data_parsley_validate = "", novalidate = "" }))
+                {
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-md-12 font-red">
+            @Html.ValidationSummary(true)
+        </div>
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.InvoiceNo)
+        @Html.HiddenFor(model => model.InvoiceDate)
+        @Html.HiddenFor(model => model.InvoiceType)
+        @Html.HiddenFor(model => model.Customer_Id)
+        @Html.HiddenFor(model => model.CustomerName)
+        @Html.HiddenFor(model => model.Phone)
+        @Html.HiddenFor(model => model.Address)
+        @Html.HiddenFor(model => model.CreatedBy)
+        @Html.HiddenFor(model => model.CreatedDate)
+     
+    </div>
+    
+    <table class="table mrg20T table-hover">
+                <thead>
+                    <tr>
+                        <th>Sl No</th>
+                        <th>Product Name</th>
+                        <th class="text-center">Quantity</th>
+                        <th>Rate</th>
+                        <th>Total</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                @foreach (var item in Model.Sales)
+                    {
+                     i++;
+                    <tr>
+                        <td>@i</td>
+                        <td>@item.Product.Name</td>
+                        <td class="text-center">@item.Qty</td>
+                        <td>@item.SaleRate</td>
+                        <td>@Math.Round(item.SaleTotal,2)</td>
+                        <th>@item.Status</th>
+                    </tr>
+                    }
+                    <tr class="font-bold font-black">
+                        <td colspan="4" class="text-right">Subtotal:</td>
+                        <td colspan="3">@Math.Round(Model.Total,2)</td>
+                    </tr>
+                    @*<tr class="font-bold font-black">
+                        <td colspan="3" class="text-right">Shipping:</td>
+                        <td colspan="3">$12.20</td>
+                    </tr>*@
+                    @*<tr class="font-bold font-black">
+                        <td colspan="4" class="text-right">Discount:</td>
+                        <td colspan="3" class="font-red">@Model.Discount</td>
+                    </tr>*@
+                    <tr class="font-bold font-black">
+                        <td colspan="4" class="text-right">TOTAL:</td>
+                        <td colspan="3" class="font-blue font-size-23">
+                            @Html.TextBoxFor(model => model.Payable, new { required = "required",style="border:none !important;background:transparent !important" })
+                        </td>
+                    </tr>
+                 
+                   @if (Model.Status == "Pending") {   
+                    
+                    <tr class="font-bold font-black">
+                        <td colspan="4" class="text-right"><span class="red">*</span>Receivable</td>
+                        <td colspan="3" class="font-blue font-size-23">
+                         @Html.TextBoxFor(model => model.Paid, new { required = "required",Value="", @class = "form-control decimal", onkeyup = "CheckDiscount()" })
+                         <ul class="parsley-errors-list" id="parsley-id-7330"></ul>
+                        </td>
+                    </tr>
+                    <tr class="font-bold font-black">
+                        <td colspan="4" class="text-right">Due</td>
+                        <td colspan="3" class="font-blue font-size-23">
+                            @Html.TextBoxFor(model => model.Due, new { required = "required", @class = "form-control", @readonly = "readonly" })
+                            @Html.TextBox("CurrentDue", Model.Due, new { id = "CurrentDue",@class="hide"})
+                        </td>
+                    </tr>
+                    <tr class="font-bold font-black">
+                        <td colspan="4" class="text-right"></td>
+                        <td colspan="3" class="font-blue font-size-23">
+                            <input id="submit" type="submit" value="Save" class="btn btn-lg btn-primary" onclick="return Check()" />
+                        </td>
+                    </tr>    
+                       
+                   }
+                   else { 
+                    <tr class="font-bold font-black">
+                        <td colspan="4" class="text-right">Paid</td>
+                        <td colspan="3" class="font-blue font-size-23">@Model.Paid</td>
+                    </tr>
+                    <tr class="font-bold font-black">
+                        <td colspan="4" class="text-right">Due</td>
+                        <td colspan="3" class="font-red font-size-23">@Model.Due</td>
+                    </tr>               
+                       
+                   if (Model.Due > 0)
+                    {
+               
+                    <tr class="font-bold font-black">
+                        <td colspan="4" class="text-right font-red">Go Transaction to pay Due Amount</td>
+                        <td colspan="3" class="font-blue font-size-23">
+                            <a href="/InvTransaction/DuePaid" class="btn btn-alt btn-hover btn-info">  @*?Id=@Model.Id*@
+                                <span>Due Paid</span>
+                                <i class="glyph-icon icon-arrow-right"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    }
+                   
+                   }
+                 
+                </tbody>
+            </table>
+            }
+
+            
+
+        </div>
+<script src="~/Scripts/SaleInvoice.js"></script>
+<script src="~/Scripts/input_validation.js"></script>
+
+  <script>
+      function Check() {
+     
+          var paid =parseFloat($('#Paid').val());
+          var Discount = parseFloat($('#CurrentDue').val());
+
+          var Payable = parseFloat($('#Payable').val());
+
+          var CurrentDiscount = Discount - paid;
+         
+          if (paid <= 1) {
+              $('#Paid').val("");
+              alert('Receivable amount must equals Total amount.');
+              return false;
+          } else if (paid > Payable || paid <Payable)
+          {
+              //alert(paid);
+              $('#Paid').val("");
+              alert('Receivable amount must equals Total amount.');
+          } else if (paid == Payable) {
+              return true;
+          }
+          else if (isNaN(paid))
+          {
+              alert('Receivable amount must have a value.');
+          }
+          else {
+              alert('Unexpected Error:Add Pay.');
+              return false;
+          }
+
+      }
+  </script>

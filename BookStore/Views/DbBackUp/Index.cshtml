@@ -1,0 +1,75 @@
+﻿@model BookStore.Models.Inventory.DbBackUp
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div id="productId">
+
+    <div id="page-title">
+        <h2>Database BackUp Forms</h2>
+        <br />
+        <p class="color-green">
+            <h5 class="mrg10A">
+              Database Back Up path location.
+            </h5>
+        </p>
+
+    </div>
+
+    <div class="panel">
+        <div class="panel-body">
+            <h3 class="title-hero">
+                @Html.Raw(ViewBag.message)
+            </h3>
+            <div class="example-box-wrapper">
+                @using (Html.BeginForm("BackUp", "DbBackUp", FormMethod.Post, new { @class = "form-horizontal bordered-row", id = "demo-form", data_parsley_validate = "", novalidate = "" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="row">
+                        <div class="col-md-6">
+                            @Html.ValidationSummary(true)
+                        </div>
+                    </div>
+                    
+                    @Html.HiddenFor(model=>model.DriveName)
+                    @Html.HiddenFor(model=>model.DirectoryPath)
+                    
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label"><span class="red">*</span>Drive Name</label>
+                                @*@Html.DisplayNameFor(model=>model.DriveName)*@
+                                <div class="col-sm-6 control-label pull-left">
+                                    @Html.DisplayFor(model => model.DriveName, new { placeholder = "Drive Name", data_parsley_maxlength = "50", required = "", @readonly = "readonly", @class = "from-control", data_parsley_id = "4059" })
+
+                                </div>
+                            </div>
+                           
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label"><span class="red">*</span>Directory Name</label>                           
+                                <div class="col-sm-6 control-label pull-left">
+                                    @Html.DisplayFor(model => model.DirectoryPath, new { required = "", @readonly = "readonly", data_parsley_maxlength = "50", placeholder = "At most 50 characters", @class = "from-control", data_parsley_id = "7330" })
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="bg-default content-box text-center pad20A mrg25T">
+
+                        <button class="btn btn-lg btn-primary btn-hover">
+                            <span>Back UP</span>
+                            <i class="glyph-icon icon-check"></i>
+                        </button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+

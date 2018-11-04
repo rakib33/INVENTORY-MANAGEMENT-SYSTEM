@@ -1,0 +1,87 @@
+﻿https://www.codeproject.com/Tips/1074608/CRUD-in-ASP-NET-MVC-using-WebAPI-with-AngularJS
+
+multiple row add
+http://demo.dotnetawesome.com/mvc/insert-multiple-record-to-database-at-a-time-aspnet-mvc4
+
+ <form class="form-inline">
+                <div class="form-group">
+                    <label>Search</label>
+                    <input type="text" ng-model="search" class="form-control" placeholder="Search">
+                </div>
+            </form>
+            <br />
+            <table class="table table-hover">
+                <tr>
+                    <th>First Name</th>
+                    <td>Last Name</td>
+                    <th>Initials</th>
+                    <th>Address</th>
+                    <th>Zip Code</th>
+                    <th>Country</th>
+                    <th></th>
+                </tr>
+                <tr dir-paginate="author in authors|orderBy:FirstName|filter:search|itemsPerPage:2" ng-dblclick="get(author)">
+                    <!--<tr data-ng-repeat="author in authors" ng-dblclick="get(author)">-->
+                    <td>
+                        <p>{{ author.FirstName }}</p>
+
+                    </td>
+                    <td>
+                        <p>{{ author.LastName }}</p>
+
+                    </td>
+                    <td>
+                        <p>{{ author.Initials }}</p>
+
+                    </td>
+                    <td>
+                        <p>{{ author.Address }}</p>
+
+                    </td>
+                    <td>
+                        <p>{{ author.ZipCode }}</p>
+                    </td>
+                    <td>
+                        <p>{{ author.Country }}</p>
+                    </td>
+                  <td>
+                    <p>
+                        <a data-ng-click="get(author)" href="javascript:;">View</a> |
+                        <a data-ng-click="edit(author)" href="javascript:;">Edit</a> |
+                        <a data-ng-click="showconfirm(author)" href="javascript:;">Delete</a>
+                    </p>
+                </td>
+
+                </tr>
+            </table>
+            <div class="pull-right">
+                <!--this is for pagination-->
+                <dir-pagination-controls max-size="2" direction-links="true" boundary-links="true"></dir-pagination-controls>
+            </div>    
+
+			  <script>
+        $(document).ready(function () {
+            $('#example').dataTable({
+                "processing": true, // control the processing indicator.
+                "serverSide": true, // recommended to use serverSide when data is more than 10000 rows for performance reasons
+                "info": true,   // control table information display field
+                "stateSave": true,  //restore table state on page reload,
+                "lengthMenu": [[10, 20, 50, -1], [10, 20, 50, "All"]],    // use the first inner array as the page length values and the second inner array as the displayed options
+                "ajax":{
+                    "url": "@string.Format("{0}://{1}{2}", Request.Url.Scheme, Request.Url.Authority, Url.Content("~"))/Home/AjaxGetJsonData",
+                    "type": "GET"
+                },
+                "columns": [
+                    { "data": "Name", "orderable" : true },
+                    { "data": "Age", "orderable": false },
+                    { "data": "DoB", "orderable": true },
+                    {
+                        "render": function (data, type, JsonResultRow, meta) {
+                            return '<img src="Content/'+JsonResultRow.ImageAddress+'">';
+                        }
+                    }
+                ],
+                "order": [[0, "asc"]]
+            });
+        });
+    </script>

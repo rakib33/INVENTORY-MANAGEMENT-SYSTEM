@@ -1,0 +1,140 @@
+﻿@model BookStore.Models.Inventory.BrandViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<style>
+    th {
+        text-align: left;
+    }
+
+    td {
+        padding: 5px;
+    }
+</style>
+<div id="brandId">
+    <div id="page-title">
+        <h2>Brand Create Forms</h2>
+        <h5 class="mrg10A color-green">
+            You can add your brand for product.
+        </h5>
+
+    </div>
+
+    <div class="panel">
+        <div class="panel-body">
+
+            <div class="example-box-wrapper">
+                @using (Html.BeginForm("Create", "InvBrand", FormMethod.Post, new { @class = "form-horizontal bordered-row", id = "demo-form", data_parsley_validate = "", novalidate = "" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="row">
+                        <div class="col-md-6 font-red">
+                            @Html.ValidationSummary(true)
+                        </div>
+                    </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label"><span class="red">*</span>Main Catagory</label>
+                                <div class="col-sm-6">
+                                    @Html.DropDownList("MainCatagory", (IEnumerable<SelectListItem>)ViewBag.MainCatagory, "Select Catagory", new { @class = "form-control", required = "" })
+                                    <ul class="parsley-errors-list" id="parsley-id-4059"></ul>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label"><span class="red">*</span>Sub Catagory</label>
+                                <div class="col-sm-6">
+                                    @Html.DropDownList("Catagory_Id", new SelectList(string.Empty, "Value", "Text"), "Select SubCatagory", new { @class = "form-control", required = "" })
+                                    <ul class="parsley-errors-list" id="parsley-id-4059"></ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    <div class="row">
+                        <div class="col-md-6">                           
+                            <a id="addNew" class="btn btn-primary btn-sm" href="#">
+                                <i class="glyph-icon icon-plus" title="" data-original-title=".icon-plus-square" aria-describedby="tooltip941007">
+                                    Add Brand
+                                </i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row margin-top-05">
+                        <div class="col-md-10">
+                            <table id="dataTable" class="table table-striped table-bordered dt-responsive nowrap" width="100%" border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <th>Sl No</th>
+                                    <th>Brand Name</th>
+                                    <th>ISIN</th>
+                                    <th>Description</th>
+                                    <th></th>
+                                </tr>
+                                @if (Model != null && Model.Brand.Count > 0)
+                                {
+                                    int j = 0;
+                                    foreach (var i in Model.Brand)
+                                    {
+                                        <tr style="border:0px">
+                                            <td>1</td>
+                                            <td>@Html.TextBoxFor(a => a.Brand[j].Name, new { id = "Brand[" + j + "]Name", @class = "form-control", required = "" })</td>
+                                            <td>@Html.TextBoxFor(a => a.Brand[j].ISIN, new { id = "Brand[" + j + "]ISIN", @class = "form-control" })</td>
+                                            <td>@Html.TextBoxFor(a => a.Brand[j].Description, new { id = "Brand[" + j + "]Description", @class = "form-control", required = "" })</td>
+                                            <td>
+                                                @if (j > 0)
+                                                {
+                                                    <a class="btn btn-purple ra-100" href="#" onclick="DeleteRow(this)">
+                                                        <i class="glyph-icon icon-minus" title="" data-original-title=".icon-minus" aria-describedby="tooltip941007">
+                                                            Remove
+                                                        </i>
+                                                    </a>
+                                                }
+                                            </td>
+                                        </tr>
+                                                j++;
+                                    }
+                                }
+                            </table>
+                        </div>
+                    </div>
+
+
+                    <div class="row bg-default content-box">
+                        <label class="col-sm-3 control-label">
+                            <span class="pull-left">
+                                <a class="btn btn-link font-blue" href="/InvBrand/Index">
+                                    <i class="glyph-icon icon-angle-double-left" title="" data-original-title=".icon-angle-double-left" aria-describedby="tooltip602646">
+                                        Back to List
+                                    </i>
+                                </a>
+                            </span>
+                        </label>
+                        <div class="col-sm-4">
+                            <button class="btn btn-lg btn-primary btn-hover" id="btnSubmit">
+                                <span>Save Brand</span>
+                                <i class="glyph-icon icon-check" title="" data-original-title=".icon-check" aria-describedby="tooltip941007"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    @*<div class="bg-default content-box text-center pad20A mrg25T">
+                        <span class="pull-left button-pane">
+                            <a class="btn btn-link font-blue" href="/InvBrand/Index">
+                                <i class="glyph-icon icon-angle-double-left" title="" data-original-title=".icon-angle-double-left" aria-describedby="tooltip602646">
+                                    Back to List
+                                </i>
+                            </a>
+                        </span>
+                        <button class="btn btn-lg btn-primary">Save Brand</button>
+                    </div>*@
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/Brandedit.js"></script>
+
