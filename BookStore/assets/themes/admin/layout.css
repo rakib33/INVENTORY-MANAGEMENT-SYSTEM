@@ -15,8 +15,8 @@
 #header-logo .logo-content-big,
 .logo-content-small {
     /*E:\WEB_API_SECURITY_MODULE\PROJECT\SECURITY_MODULE_API\SECURITY_MODULE_API\assets\image-resources\logo-admin.png*/
-    background:url('/assets/image-resources/risoft-white.png') left 50% no-repeat;  
-    /*background: url('https://agileui.com/demo/monarch/image-resources/logo-admin.png') left 50% no-repeat;*/
+    /*background:url('/assets/image-resources/risoft-white.png') left 50% no-repeat;*/  
+    background: url('/assets/image-resources/logo-admin.png') left 50% no-repeat;
     text-indent: -999em;
     position: absolute;
     height: 34px;

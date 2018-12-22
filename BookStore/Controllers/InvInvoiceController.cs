@@ -1,4 +1,7 @@
-﻿using System;
+﻿
+using BookStore.Hubs; //add this to braodcast changes to all connected client
+
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -88,7 +91,8 @@ namespace BookStore.Controllers
                 db.Transactions.Add(NewTransaction);
 
                 db.SaveChanges();
-
+                //Notify to all Client
+                CustomerHub.BroadcastData();
             }
             catch (Exception ex)
             {
@@ -159,6 +163,9 @@ namespace BookStore.Controllers
                 db.Transactions.Add(NewTransaction);
 
                 db.SaveChanges();
+
+                //Notify to all Client
+                CustomerHub.BroadcastData();
 
             }
             catch (Exception ex)

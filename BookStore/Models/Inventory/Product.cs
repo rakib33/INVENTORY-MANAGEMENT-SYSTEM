@@ -84,19 +84,38 @@ namespace BookStore.Models.Inventory
         public string ProductId { get; set; }
        // public DateTime? CreatedDate { get; set; }       
         public string Name { get; set; }
-        //public string BarCode { get; set; }     
+        //public string BarCode { get; set; }  
+
+       [DisplayFormat(DataFormatString = "{0:0.0000}")]
         public decimal? BuyQty { get; set; }
+
+       [DisplayFormat(DataFormatString = "{0:0.0000}")]
         public decimal? BuyAmount { get; set; }
+
+       [DisplayFormat(DataFormatString = "{0:0.0000}")]
         public decimal? SaleQty { get; set; }
+
+      [DisplayFormat(DataFormatString = "{0:0.0000}")]
         public decimal? SaleAmount { get; set; }
         //public decimal Qty { get; set; }
-        public decimal CurrentStockQty { get; set; }
-        public decimal? AvgCost { get; set; } //AvgPurchaseRate
-        public decimal? TotalCost { get; set; }
 
+       [DisplayFormat(DataFormatString = "{0:0.0000}")]
+        public decimal CurrentStockQty { get; set; }
+
+       [DisplayFormat(DataFormatString = "{0:0.0000}")]
+        public decimal? AvgCost { get; set; } //AvgPurchaseRate
+
+       [DisplayFormat(DataFormatString = "{0:0.0000}")]
+        public decimal? TotalCost { get; set; }
+       [DisplayFormat(DataFormatString = "{0:0.0000}")]
         public decimal? MarketRate { get; set; }
+       [DisplayFormat(DataFormatString = "{0:0.0000}")]
         public decimal? MarketValue { get; set; }
+
+       [DisplayFormat(DataFormatString = "{0:0.0000}")]
         public decimal? RealizedGain { get; set; }
+
+       [DisplayFormat(DataFormatString = "{0:0.0000}")]
         public decimal? UnRealizedGain { get; set; }
 
         public int Sequence { get; set; }
